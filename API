@@ -1,0 +1,21 @@
+Tornado API
+
+Page name:
+    path: (example - \settings\profile)
+    request type: GET\POST...
+    description:
+    parameters:
+        >name:
+        >in: where in the http protocol the parameter is passed url\body\json...
+        >description:
+        >requierd: true\false
+        >type: text\number\password\file
+        >format: string\double\integer\json
+
+    response:
+        >status:200\404\503...
+        >description: OK\redirect...
+        >object: html\json\string\number\array
+
+        >alternative response:(default)
+            >>description:(example - unexpected error)
