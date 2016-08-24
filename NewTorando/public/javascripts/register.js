@@ -2,19 +2,15 @@
  * Created by tomerbarshishat on 24/08/2016.
  */
 
-var username = $("#userName").valueOf();
-var password = $("#password").valueOf();
-var Retype_password = $("#Retype_password").valueOf();
-
-if(password =! Retype_password){
-    $("#error").html("the password is not match");
-}
-$("#Register").click(function() {
+function register() {
+    console.log("dadadadadad")
     var person = {
-        name: $("userName").val(),
+        name: $("#userName").val(),
         password:$("#password").val()
     }
 
+    console.log(person.name)
+    console.log(person.password)
     $.ajax({
         url: '/register',
         type: 'post',
@@ -33,5 +29,5 @@ $("#Register").click(function() {
     });
 
 
-});
+}
 
