@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat With...</title>
+    <script type="text/javascript" src="javascripts/chat.js"></script>
+</head>
+<body>
+    <div data-role="panel" id="trns_prev_panel">
+        <!-- panel content goes here it will display the translation preview-->
+    </div><!-- /panel -->
+
+    <div data-role="page">
+        <div id="chat_header">
+            <button id="chat_back" onclick="">Back to lobby</button>
+            <h2 id="chat_title">Temporary text</h2>
+            <img src="#" id="chat_pic">
+        </div>
+
+        <div id="chat_footer">
+            <input type="text" id="chat_textbox" placeholder="Type your message here">
+            <button id="send_msg" onclick="sendMsg">Send</button>
+            <button id="trns_preview" onclick="prevTrans">T</button>
+        </div>
+    </div>
+</body>
+</html>

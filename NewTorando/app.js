@@ -99,5 +99,12 @@ app.use(function (err, req, res, next) {
     });
 });
 
+//handler for chats request
+/*app.get('/chats', function(req, res){
+  connection.query('SELECT * FROM chats',function(){
+
+  });
+});*/
+
 
 module.exports = app;

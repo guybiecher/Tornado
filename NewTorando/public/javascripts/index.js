@@ -1,15 +1,9 @@
-function getChats(str) {
-    var xhttp;
-    if (str == "") {
-        document.getElementById("chats_list").innerHTML = "";
-        return;
-    }
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            document.getElementById("chats_list").innerHTML = xhttp.responseText;
+/*$(function(){
+    $.get("\chats", function(data){
+        for(i in data.chats){
+            var cur_username = i.user;
+            var cur_prof_pic = i.pic;
+            $("#chats_list").append("<li><img src='../images/smiley.gif'>" + cur_username + "</li>");
         }
-    };
-    xhttp.open("GET", "getchats.asp?q="+str, true);
-    xhttp.send();
-}
+    });
+});*/
