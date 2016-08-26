@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat With...</title>
-    <script type="text/javascript" src="javascripts/chat.js"></script>
+
 </head>
 <body>
     <div data-role="panel" id="trns_prev_panel">
@@ -12,16 +12,30 @@
 
     <div data-role="page">
         <div id="chat_header">
-            <button id="chat_back" onclick="">Back to lobby</button>
+            <button id="chat_back_btn" onclick="">Back to lobby</button>
             <h2 id="chat_title">Temporary text</h2>
             <img src="#" id="chat_pic">
         </div>
 
+        <div id="chat_body" style="height:400px;">
+
+        </div>
+
         <div id="chat_footer">
-            <input type="text" id="chat_textbox" placeholder="Type your message here">
-            <button id="send_msg" onclick="sendMsg">Send</button>
-            <button id="trns_preview" onclick="prevTrans">T</button>
+            <form id="msgForm">
+                <input type="text" id="chat_textbox" placeholder="Type your message here">
+                <button id="caht_send_btn">Send</button>
+                <button id="chat_trns_preview" onclick="prevTrans">T</button>
+            </form>
         </div>
     </div>
+
+    <script type="text/javascript" src="javascripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/chat.js"></script>
+    <script  type="text/javascript" src="javascripts/socket.io.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
 </body>
 </html>

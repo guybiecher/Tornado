@@ -11,6 +11,7 @@ var parser = require('json-parser');
 var mysql = require('mysql');
 
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -45,7 +46,7 @@ app.use(session({
 
 app.get('/register', function (req, res) {
     res.sendfile(__dirname + '/public/register.html')
-})
+});
 
 app.get('/login', function (req, res) {
     res.sendfile(__dirname + '/public/login.html')
@@ -101,6 +102,9 @@ app.post('/register', function (req, res) {
 
 });
 
+app.get('/chat', function (req, res) {
+    res.sendfile(__dirname + '/public/single_chat.html')
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -88,3 +88,17 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+/**
+ *  Socket.io code
+ */
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function(socket){
+  socket.on('send_msg', function(data){
+    console.log('msg recieved');
+    io.sockets.emit('new_msg', data);
+    console.log('msg sent');
+    //socket.broadcast.emit(new_msg, data); --> send message to all users EXCEPT ME connected to the chat, can be used for groups later on
+  });
+});
