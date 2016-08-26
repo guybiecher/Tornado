@@ -1,7 +1,6 @@
 {
-  "name": "tornado",
+  "name": "tomer",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,5 +24,7 @@
     "log4js": "^0.6.38",
     "multer": "^1.2.0",
     "mysql": "^2.5.4"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
