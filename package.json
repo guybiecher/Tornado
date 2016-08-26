@@ -19,8 +19,10 @@
   "homepage": "https://github.com/guybiecher/Tornado#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "client-sessions": "^0.7.0",
     "cookie-parser": "^1.4.3",
     "json-parser": "^1.1.5",
+    "log4js": "^0.6.38",
     "multer": "^1.2.0",
     "mysql": "^2.5.4"
   }

@@ -3,7 +3,6 @@
  */
 
 function register() {
-    console.log("dadadadadad")
     var person = {
         name: $("#userName").val(),
         password:$("#password").val()
@@ -11,23 +10,14 @@ function register() {
 
     console.log(person.name)
     console.log(person.password)
-    $.ajax({
-        url: '/register',
-        type: 'post',
-        dataType: 'json',
-        succsess: function(data) {
-            if (data == "ERROR_1") {
-                $("#command").html("The username is invalid");
-            } else if (data == "ERROR_2") {
-                $("#command").html("The password is invalid");
-            }
+    $.post("/register",
+        {
+            name: person.name,
+            password: person.password
         },
-
-        data: person
-
-
-    });
-
-
+        function(data, status){
+           console.log("Status: " + status);
+            window.open('http://localhost:3000/')
+            window.document.write(data)
+        });
 }
-
