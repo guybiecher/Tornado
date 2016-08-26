@@ -17,7 +17,19 @@ function login() {
         },
         function(data, status){
             console.log("Status: " + status);
+            if(data === "Didn't login"){
+                alert("momsda")
+            }else{
+                window.location.href = 'http://localhost:3000/home';
+
+            }
+
 
         });
 }
+
+function registerlogin(){
+    window.location.href = 'http://localhost:3000/register';
+}
+
 
