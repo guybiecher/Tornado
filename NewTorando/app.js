@@ -57,6 +57,10 @@ app.get('/account', function (req, res) {
     res.sendfile(__dirname + '/public/Account.html')
 })
 
+app.get('/translate', function (req, res) {
+    res.sendfile(__dirname + '/public/translate.html')
+})
+
 
 app.post('/login', function (req, res) {
     checkUserOnDB(req, res, req.body.name, req.body.password, "login")
