@@ -1,11 +1,13 @@
 /**
  * Created by tomerbarshishat on 27/08/2016.
  */
-function updateLanguage() {
+function updatelanguage() {
+
     var $lang = $('#language');
+    console.log($lang.val())
     $.post('/updatelanguage',
         {
-            language : lang
+            language : $lang.val()
         }),
         function (data) {
             if(data === "Cant get language"){

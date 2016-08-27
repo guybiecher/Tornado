@@ -85,7 +85,8 @@ app.get('/home', function (req, res) {
 app.post('/updatelanguage', function (req, res) {
     var connection = createConnection()
     var user = req.session.user
-    var language = req.body.langauage
+    var language = req.body.language
+    console.log(language)
 
     var query = 'UPDATE Users SET language = ? WHERE user = ?;'
 
@@ -99,6 +100,8 @@ app.post('/updatelanguage', function (req, res) {
             res.send(rows)
         }
     })
+    connection.end();
+
 
 })
 
