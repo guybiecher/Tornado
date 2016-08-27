@@ -21,10 +21,15 @@
     "body-parser": "^1.15.2",
     "client-sessions": "^0.7.0",
     "cookie-parser": "^1.4.3",
+    "http": "0.0.0",
+    "http-request": "^0.7.0",
     "json-parser": "^1.1.5",
     "log4js": "^0.6.38",
     "multer": "^1.2.0",
     "mysql": "^2.5.4",
-    "socket.io": "^1.4.8"
+    "promise": "^7.1.1",
+    "querystring": "^0.2.0",
+    "socket.io": "^1.4.8",
+    "yandex-translate": "^2.1.0"
   }
 }

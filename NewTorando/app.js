@@ -9,6 +9,9 @@ var bodyParser = require('body-parser');
 var session = require('client-sessions');
 var parser = require('json-parser');
 var mysql = require('mysql');
+var querystring = require('querystring');
+var http = require('http');
+
 
 
 
