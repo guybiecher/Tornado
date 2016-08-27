@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
     <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
     <script type="text/javascript" src="javascripts/index.js"></script>
+    <script  type="text/javascript" src="javascripts/socket.io.js"></script>
     <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,17 +25,29 @@
 
             <div data-role="navbar" data-iconpos="left">
                 <ul>
-                    <li><button type="button" onclick="" class="nav_button">Contacts</button></li>
-                    <li><button type="button" onclick="" class="nav_button">Chats</button></li>
-                    <li><button type="button" onclick="" class="nav_button" data-icon="gear">Settings</button></li>
+                    <li><button type="button" onclick="showContacts()" class="nav_button">Contacts</button></li>
+                    <li><button type="button" onclick="showChats()" class="nav_button">Chats</button></li>
+                    <li><button type="button" onclick="showSettings()" class="nav_button" data-icon="gear">Settings</button></li>
                 </ul>
             </div>
         </div>
 
-        <div role="main" class="ui-content">
-            <ul id="chats_list">
+        <div id="contacts_list" style="display: none">
+            <ul>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+
+        <div id="chat_list" style="display: block;">
+            <ul>
 
             </ul>
+
+        </div>
+
+        <div id="settings" style="display: none">
 
         </div>
 

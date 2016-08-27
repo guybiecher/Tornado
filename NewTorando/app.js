@@ -13,6 +13,7 @@ var querystring = require('querystring');
 var http = require('http');
 
 
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -147,7 +148,8 @@ app.post('/register', function (req, res) {
             loggerInfo.info('The solution is: ', rows);
             req.session.user = name;
             req.session.password = passowrd;
-            res.sendfile(__dirname + '/public/index.html')
+            res.sendfile(__dirname + '/public/index.html');
+
         }
         else {
             loggerInfo.info(err.message);
@@ -162,7 +164,34 @@ app.post('/register', function (req, res) {
 });
 
 app.get('/chat', function (req, res) {
+
     res.sendfile(__dirname + '/public/single_chat.html')
+});
+
+app.get('/session', function(req, res){
+    if(typeof(req.session.user) !== 'undefined'){
+        res.statusCode = 200;
+        res.send(req.session.user);
+    } else {
+        res.statusCode = 400;
+        res.send('Oops! Something went wrong. Please loguot and login again');
+    }
+});
+
+app.get('/contacts', function(req, res){
+    var connection = createConnection();
+    connection.query('SELECT * FROM Users', function(err, rows){
+        if(!err){
+            res.statusCode = 200;
+            for(var i in rows){
+                rows[i].password = null;
+            }
+            res.send(rows);
+        } else {
+            res.statusCode = 400;
+        }
+    });
+    connection.end();
 });
 
 // catch 404 and forward to error handler
