@@ -13,8 +13,6 @@ var querystring = require('querystring');
 var http = require('http');
 
 
-
-
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -61,7 +59,7 @@ app.get('/account', function (req, res) {
 
 
 app.post('/login', function (req, res) {
-    checkUserOnDB(req,res,req.body.name ,req.body.password , "login")
+    checkUserOnDB(req, res, req.body.name, req.body.password, "login")
 })
 
 
@@ -72,7 +70,7 @@ app.get('/home', function (req, res) {
         var userSession = req.session.user
         var password = req.session.password
 
-        checkUserOnDB(req ,res,userSession,password ,"home")
+        checkUserOnDB(req, res, userSession, password, "home")
 
     } else {
         loggerInfo.info("User not login")
@@ -80,7 +78,27 @@ app.get('/home', function (req, res) {
     }
 })
 
-app.post('/updateUser' , function (req, res) {
+app.post('/updatelanguage', function (req, res) {
+    var connection = createConnection()
+    var user = req.session.user
+    var language = req.body.langauage
+
+    var query = 'UPDATE Users SET language = ? WHERE user = ?;'
+
+    connection.query(query,[language , user],function (err ,rows ,fileds) {
+        if (err) {
+            loggerInfo.info(err.message)
+            res.send("Cant get language")
+        }
+        else{
+            loggerInfo.info("Language user select successfully")
+            res.send(rows)
+        }
+    })
+
+})
+
+app.post('/updateUser', function (req, res) {
     console.log("leh zdaien")
     var connection = createConnection()
     var olduser = req.session.user
@@ -116,7 +134,7 @@ app.post('/register', function (req, res) {
     var passowrd = req.body.password
     var connection = createConnection()
 
-    var post = {user: name, password: passowrd};
+    var post = {user: name, password: passowrd, language: "en"};
     connection.query('INSERT INTO Users SET ?', post, function (err, rows, fields) {
         if (!err) {
             loggerInfo.info('The solution is: ', rows);
@@ -172,8 +190,6 @@ app.use(function (err, req, res, next) {
 });
 
 
-
-
 //create connection to DB
 function createConnection() {
     var connection = mysql.createConnection({
@@ -187,7 +203,7 @@ function createConnection() {
     return connection
 }
 
-function checkUserOnDB(req ,res, user , password ,functionName) {
+function checkUserOnDB(req, res, user, password, functionName) {
 
     var connection = createConnection()
 
@@ -199,14 +215,14 @@ function checkUserOnDB(req ,res, user , password ,functionName) {
     connection.query(query, [user], function (err, rows, fields) {
         if (!err) {
 
-            if (typeof rows[0] != 'undefined'){
+            if (typeof rows[0] != 'undefined') {
                 loggerInfo.info("User login checking password ");
                 if (password === rows[0].password) {
                     loggerInfo.info("User login by cookie password correct")
                     req.session.reset()
                     req.session.user = user
                     req.session.password = password
-                    if (functionName === "home"){
+                    if (functionName === "home") {
                         console.log("home")
                         res.redirect("/")
                     }
@@ -215,7 +231,7 @@ function checkUserOnDB(req ,res, user , password ,functionName) {
                         res.redirect("/")
                     }
                 }
-                else{
+                else {
                     loggerInfo.info("Password is not correct")
                     res.send("Didn't login")
 
@@ -237,7 +253,6 @@ function checkUserOnDB(req ,res, user , password ,functionName) {
     connection.end();
 
 }
-
 
 
 module.exports = app;
