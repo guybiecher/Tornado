@@ -55,6 +55,11 @@ app.get('/login', function (req, res) {
     res.sendfile(__dirname + '/public/login.html')
 })
 
+app.get('/account', function (req, res) {
+    res.sendfile(__dirname + '/public/Account.html')
+})
+
+
 app.post('/login', function (req, res) {
     checkUserOnDB(req,res,req.body.name ,req.body.password , "login")
 })
@@ -75,6 +80,32 @@ app.get('/home', function (req, res) {
     }
 })
 
+app.post('/updateUser' , function (req, res) {
+    console.log("leh zdaien")
+    var connection = createConnection()
+    var olduser = req.session.user
+    var user = req.body.name
+    var password = req.body.password
+
+    var query = 'UPDATE Users SET user = ? , password = ? WHERE user = ?;'
+
+    connection.query(query, [user, password, olduser], function (err, rows, fields) {
+        if (err) {
+            loggerInfo.info(err.message)
+            res.send("Cant update user")
+        }
+        else {
+            loggerInfo.info("Update successfully user")
+            req.session.reset()
+            req.session.user = user
+            req.session.password = password
+            res.send("User name and password updated")
+        }
+
+    })
+    connection.end();
+
+})
 
 app.post('/register', function (req, res) {
     loggerInfo.info("User try to register")
@@ -141,6 +172,8 @@ app.use(function (err, req, res, next) {
 });
 
 
+
+
 //create connection to DB
 function createConnection() {
     var connection = mysql.createConnection({
@@ -204,5 +237,7 @@ function checkUserOnDB(req ,res, user , password ,functionName) {
     connection.end();
 
 }
+
+
 
 module.exports = app;
