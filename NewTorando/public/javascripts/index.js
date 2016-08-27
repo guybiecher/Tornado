@@ -1,3 +1,4 @@
+
 function showChats(){
     $('#contacts_list').css('display', 'none');
     $('#chat_list').css('display', 'block');
@@ -16,18 +17,22 @@ function showSettings(){
     $('#settings').css('display', 'block');
 };
 
-function openNewChat(user_obj){
-    $('#chat_list').append("<li onclick=openChat(" + user_obj + ")>" + data[i].user + "</li>");
-    openChat(user_obj);
+function openNewChat(userName){
+   console.log(userName + ' openNewChat OK');//debug
+    $('#chat_list').append('<li><button onclick="openChat(\'' + userName + '\')">' + userName + '</button></li>');
+    $.get('/chat', {user: userName}, function (data, status) {
+
+    });
+
+    openChat(userName);
 };
 
-function openChat(user_obj){
-    if(1){
+function openChat(userName){
+    console.log(userName + ' openChat OK');//debug
 
-    }
 };
 
-$(function(){
+$(function($){
     var socket = io.connect();
 
     $.get('/session', function(data, status){
@@ -40,10 +45,18 @@ $(function(){
     });
 
     $.get('/contacts', function(data, status){
+        var contactList = $('#contacts_list');
         if(status === 'success'){
+            contactList.append('<ul>')
             for(var i in data){
-                $('#contacts_list').append("<li onclick=openNewChat(" + data[i] + ")>" + data[i].user + "</li>");
+                var socketID = data[i].socket_id;
+                var user = data[i].user;
+                var lang = data[i].language;
+                var str = '<li><button onclick="openNewChat(\'' + user + '\')">' + user + '</button></li>';
+                //$('#contacts_list').append("<li onclick=\'openNewChat(" + user + ", " + socketID + ", " + lang + ")\'>" + user + "</li>");
+                contactList.append(str);
             }
+            contactList.append('</ul>')
         } else {
            alert('Error retreaving contacs, please refresh the page');
         }

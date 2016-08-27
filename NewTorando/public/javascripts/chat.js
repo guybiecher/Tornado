@@ -4,7 +4,7 @@ $(function($){
     var $txtInput = $('#chat_textbox');
     var $chat = $('#chat_body');
     var $lang = $('#language');
-    console.log($lang.val())
+
 
     $msgBtn.click(function(e){
         e.preventDefault();

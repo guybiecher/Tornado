@@ -164,7 +164,7 @@ app.post('/register', function (req, res) {
 });
 
 app.get('/chat', function (req, res) {
-
+    console.log('yyesss')
     res.sendfile(__dirname + '/public/single_chat.html')
 });
 
