@@ -18,7 +18,7 @@ function login() {
         function(data, status){
             console.log("Status: " + status);
             if(data === "Didn't login"){
-                alert("momsda")
+                alert("login failed")
             }else{
                 window.location.href = 'http://localhost:3000/home';
             }

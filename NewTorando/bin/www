@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('untitled1:server');
 var http = require('http');
 var mysql = require('mysql');
+var rooms={};
 
 /**
  * Get port from environment and store in Express.
@@ -115,18 +116,24 @@ var Promise = require('promise')
 
 
 io.sockets.on('connection', function (socket) {
-    socket.on('send_msg', function (data , lang) {
-        console.log('msg recieved');
-        translateMeesage(data ,lang).then(
-            function (value) {
-                console.log(value)
-                io.sockets.emit('new_msg', value);
-            }, function (reason) {
-                console.error("Cant translate the message")
-                io.sockets.emit('new_msg', "Cant translate the message")
-            }
-        )
-        console.log('msg sent');
+    socket.on('send_msg', function (data , lang, target) {
+        console.log('msg received');
+        console.log(target);
+        if(target in rooms){
+            translateMeesage(data ,lang).then(
+                function (value) {
+                    console.log(value)
+                    rooms[target].emit('new_msg', value);
+                }, function (reason) {
+                    console.error("Cant translate the message")
+                    rooms[target].emit('new_msg', "Cant translate the message")
+                }
+            )
+            console.log('msg sent');
+        } else {
+            socket.emit('new_msg', target + " is offline, can't send a message");
+        }
+
         //socket.broadcast.emit(new_msg, data); --> send message to all users EXCEPT ME connected to the chat, can be used for groups later on
     });
 
@@ -134,17 +141,37 @@ io.sockets.on('connection', function (socket) {
         if(err){
             console.log('socket request: new socket failed');
         } else {
-            var connection = createConnection();
-            var qry = "UPDATE Users SET status=1, socket_id = ? WHERE user=?";
-            var userQery = '' + data;
-            connection.query(qry,[socket.id, userQery], function(err,row){
-                if(err){
-                    console.log('query failed');
-                }
-            });
-            connection.end();
+            socket.name = data;
+            rooms[socket.name] = socket;
+            // var connection = createConnection();
+            // var qry = "UPDATE Users SET status=1, socket_id = ? WHERE user=?";
+            // var userQery = '' + data;
+            // connection.query(qry,[socket.id, userQery], function(err,row){
+            //     if(err){
+            //         console.log('query failed');
+            //     }
+            // });
+            // connection.end();
         }
+        console.log(Object.keys(rooms));
     });
+
+    // socket.on('set target', function (data, callback) {
+    //     console.log('set target event:')
+    //     console.log(data)
+    //     target = data;
+    // })
+
+    // socket.on('logout', function (data, callback) {
+    //     if(err){
+    //         callback(false);
+    //     } else {
+    //         callback(true);
+    //         if(!socket.name) return;
+    //         delete rooms[socket.name];
+    //     }
+    // })
+
 });
 
 
@@ -164,3 +191,5 @@ function translateMeesage(data , language) {
             })
         })
 }
+
+module.exports = rooms;

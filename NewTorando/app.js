@@ -11,6 +11,8 @@ var parser = require('json-parser');
 var mysql = require('mysql');
 var querystring = require('querystring');
 var http = require('http');
+var fs = require('fs');
+var www = require('./bin/www');
 
 
 
@@ -164,9 +166,25 @@ app.post('/register', function (req, res) {
 });
 
 app.get('/chat', function (req, res) {
-    console.log('yyesss')
+    console.log('yyesss');
+    // fs.readFile(__dirname + '/public/single_chat.html', function (err, data) {
+    //     if(err) return res.status(500).send("Error");
+    //     res.send(data.toString());
+    // });
+    req.session.target = req.body.user;
     res.sendfile(__dirname + '/public/single_chat.html')
 });
+
+app.get('/getTarget', function (req, res) {
+    console.log('BLAT');
+    if(req.session.target in rooms){
+        res.statusCode = 200;
+        res.send(req.session.target);
+    } else {
+        res.statusCode = 400;
+        res.send('User is offline');
+    }
+})
 
 app.get('/session', function(req, res){
     if(typeof(req.session.user) !== 'undefined'){
@@ -243,8 +261,8 @@ function checkUserOnDB(req, res, user, password, functionName) {
 
     var connection = createConnection()
 
-    loggerInfo.info(user)
-    loggerInfo.info(password)
+    loggerInfo.info(user);
+    loggerInfo.info(password);
 
     var query = 'SELECT password FROM Users WHERE user =  ? ';
 
