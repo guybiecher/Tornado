@@ -192,6 +192,7 @@ app.get('/getTarget', function (req, res) {
     console.log('BLAT 1');
     console.log(req.session);
     console.log(req.session.target);
+    console.log(Object.keys(rooms));
     if(req.session.target in rooms){
         console.log('BLAT 2');
         res.statusCode = 200;

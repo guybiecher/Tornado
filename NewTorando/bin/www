@@ -123,8 +123,10 @@ io.sockets.on('connection', function (socket) {
         if(target in rooms){
             translateMeesage(data ,lang).then(
                 function (value) {
-                    console.log(value)
-                    rooms[target].emit('new_msg', value);
+                    console.log(value);
+                    console.log(rooms[target]);
+                    rooms[target].emit('new_msg', value);//<<<<<<<<<<<THE PROBLEM IS HERE
+                    socket.emit('new_msg', value);
                 }, function (reason) {
                     console.error("Cant translate the message")
                     rooms[target].emit('new_msg', "Cant translate the message")
