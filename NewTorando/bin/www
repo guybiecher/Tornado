@@ -4,11 +4,12 @@
  * Module dependencies.
  */
 
+var rooms={};
+exports.rooms = rooms;
 var app = require('../app');
 var debug = require('debug')('untitled1:server');
 var http = require('http');
 var mysql = require('mysql');
-var rooms={};
 
 /**
  * Get port from environment and store in Express.
@@ -192,4 +193,4 @@ function translateMeesage(data , language) {
         })
 }
 
-module.exports = rooms;
+// module.exports = rooms;

@@ -13,6 +13,7 @@ var querystring = require('querystring');
 var http = require('http');
 var fs = require('fs');
 var www = require('./bin/www');
+var rooms = www.rooms;
 
 
 
@@ -165,22 +166,38 @@ app.post('/register', function (req, res) {
 
 });
 
-app.get('/chat', function (req, res) {
+app.post('/chat', function (req, res) {
     console.log('yyesss');
     // fs.readFile(__dirname + '/public/single_chat.html', function (err, data) {
     //     if(err) return res.status(500).send("Error");
     //     res.send(data.toString());
     // });
+    console.log(req.body.user)
     req.session.target = req.body.user;
     res.sendfile(__dirname + '/public/single_chat.html')
 });
 
+app.get('/chat', function (req, res) {
+    // console.log('yyesss');
+    // fs.readFile(__dirname + '/public/single_chat.html', function (err, data) {
+    //     if(err) return res.status(500).send("Error");
+    //     res.send(data.toString());
+    // });
+    // console.log(req.body.user)
+    // req.session.target = req.body.user;
+    res.sendfile(__dirname + '/public/single_chat.html')
+});
+
 app.get('/getTarget', function (req, res) {
-    console.log('BLAT');
+    console.log('BLAT 1');
+    console.log(req.session);
+    console.log(req.session.target);
     if(req.session.target in rooms){
+        console.log('BLAT 2');
         res.statusCode = 200;
         res.send(req.session.target);
     } else {
+        console.log('BLAT 3');
         res.statusCode = 400;
         res.send('User is offline');
     }

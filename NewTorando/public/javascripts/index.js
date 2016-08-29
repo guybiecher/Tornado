@@ -44,7 +44,18 @@ function openNewChat(userName){
 
 function openChat(userName){
     console.log(userName + ' openChat OK');//debug
-    $.get('/chat', {user: userName}, function (data, status) {
+    $.post('/chat', {user: userName}, function (data, status) {
+        if(status === 'success'){
+            // $('#active_chat').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
+            // location.replace('http://localhost:3000');
+            // window.open('http://localhost:3000/chat', '_self');
+            // window.open('http://localhost:3000/chat');
+        } else {
+            // alert('chat open failed, please try again');
+        }
+    });
+
+    $.get('/chat', function (data, status) {
         if(status === 'success'){
             // $('#active_chat').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
             // location.replace('http://localhost:3000');
