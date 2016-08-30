@@ -14,6 +14,8 @@ var http = require('http');
 var fs = require('fs');
 var www = require('./bin/www');
 var rooms = www.rooms;
+var session = require('express-session');
+
 
 
 
@@ -59,6 +61,15 @@ app.get('/login', function (req, res) {
     res.sendfile(__dirname + '/public/login.html')
 })
 
+app.get('/logout', function (req, res) {
+
+
+    req.logout;
+    req.session.destroy(function (err) {
+        //console.log(req.session.toString())
+        res.redirect('/login'); //Inside a callback… bulletproof!
+    });
+});
 app.get('/account', function (req, res) {
         res.sendFile(__dirname + '/public/Account.html', '_self')
 
@@ -74,6 +85,7 @@ app.post('/login', function (req, res) {
 })
 
 app.get('/settings', function (req, res) {
+    console.log(req.session)
     res.sendfile(__dirname + '/public/settings.html')
 })
 
@@ -83,7 +95,8 @@ app.get('/about', function (req, res) {
 app.get('/home', function (req, res) {
     loggerInfo.info(req.session)
 
-    if (typeof req.session.user != 'undefined') {
+    if (typeof req.session.user != 'undifined') {
+        console.log(req.session.user)
         var userSession = req.session.user
         var password = req.session.password
 
@@ -271,7 +284,7 @@ function checkUserOnDB(req, res, user, password, functionName) {
                 loggerInfo.info("User login checking password ");
                 if (password === rows[0].password) {
                     loggerInfo.info("User login by cookie password correct")
-                    req.session.reset()
+                    req.session.reset
                     req.session.user = user
                     req.session.password = password
                     if (functionName === "home") {
@@ -285,13 +298,12 @@ function checkUserOnDB(req, res, user, password, functionName) {
                 }
                 else {
                     loggerInfo.info("Password is not correct")
-                    res.send("Didn't login")
-
+                    res.sendFile(__dirname + '/public/login.html', '_self')
                 }
             }
             else {
                 loggerInfo.info("User name doesn't exitst")
-                res.send("Didn't login")
+                res.sendFile(__dirname + '/public/login.html', '_self')
 
             }
         }

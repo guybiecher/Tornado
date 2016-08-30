@@ -20,6 +20,17 @@ function Account(){
     });
 };
 
+
+
+function logout() {
+    console.log("logout")
+;    $.get('/logout' , function (data,status) {
+
+        window.open('http://localhost:3000/login', '_self')
+
+    })
+
+}
 function Translate(){
     console.log("tomererTTTTT")
 
@@ -31,7 +42,7 @@ function Translate(){
             alert("momsda")
         }
 
-        window.open('/translate',"_parent")
+        window.open('/translate', '_self')
     });
 };
 
