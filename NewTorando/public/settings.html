@@ -3,11 +3,18 @@
     <head>
     <meta charset="UTF-8">
     <title>settinges page</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="javascripts/jquery-1.12.4.min.js"></script>
+        <script src="path/to/your/jquery.ui.min.js"></script>
+        <script Ftype="text/javascript" src="javascripts/settings.js"></script>
 
+        <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+        <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+        <script  type="text/javascript" src="javascripts/socket.io.js"></script>
+        <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
     </head>
     <body>
-    <p><a href="login.html">
+    <p><a href="http://localhost:3000/login">
         <img src="images/arrow.gif" alt="HTML tutorial" align="left" style="width:42px;height:42px;border:0;">
     </a><h1>Settings</h1><br></p>
 
@@ -16,14 +23,19 @@
     <div id="settinges_clicks" style="display:flex">
         <form>
 
-            <img src="smiley.gif" alt="profile_pic" width="42" height="42">
             <button onclick="Account()">Account</button><br>
             <button onclick="Chat()">Chatt</button><br>
             <button onclick="Translate()">Translate</button><br>
             <button onclick="Notifications()">Notifications</button><br>
             <button onclick="About()">About</button><br>
+            <button on onclick="logout()">logout</button>
         </form>
     </div>
+
+
+
+
+
 
     </body>
 </html>

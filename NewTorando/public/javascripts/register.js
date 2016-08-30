@@ -17,7 +17,6 @@ function register() {
         },
         function(data, status){
            console.log("Status: " + status);
-            window.open('http://localhost:3000/');
-            window.document.write(data);
+            window.open('http://localhost:3000/','_self');
         });
 }

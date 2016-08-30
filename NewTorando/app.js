@@ -34,6 +34,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
 //use routers
 // app.use('/', routes);
 app.use('/users', users);
@@ -58,7 +60,8 @@ app.get('/login', function (req, res) {
 })
 
 app.get('/account', function (req, res) {
-    res.sendfile(__dirname + '/public/Account.html')
+        res.sendFile(__dirname + '/public/Account.html', '_self')
+
 })
 
 app.get('/translate', function (req, res) {
@@ -70,7 +73,13 @@ app.post('/login', function (req, res) {
     checkUserOnDB(req, res, req.body.name, req.body.password, "login")
 })
 
+app.get('/settings', function (req, res) {
+    res.sendfile(__dirname + '/public/settings.html')
+})
 
+app.get('/about', function (req, res) {
+    res.sendfile(__dirname + '/public/about.html')
+})
 app.get('/home', function (req, res) {
     loggerInfo.info(req.session)
 
@@ -230,36 +239,7 @@ app.get('/contacts', function(req, res){
     connection.end();
 });
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+//
 
 
 //create connection to DB

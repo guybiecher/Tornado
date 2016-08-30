@@ -9,11 +9,10 @@ function Account(){
         $.get('/account', function (data, status) {
             console.log("Status: " + status);
             console.log(data);
-            window.open('/account', '_self')
             if (data === "Didn't login") {
                 alert("momsda")
             }
-
+        window.open('http://localhost:3000/account', '_parent');
 
 
         });
