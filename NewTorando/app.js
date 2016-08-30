@@ -119,7 +119,7 @@ app.post('/updatelanguage', function (req, res) {
 })
 
 app.post('/updateUser', function (req, res) {
-    console.log("leh zdaien")
+    console.log("leh zdaien")//debug
     var connection = createConnection()
     var olduser = req.session.user
     var user = req.body.name
@@ -186,7 +186,6 @@ app.post('/chat', function (req, res) {
 });
 
 app.get('/chat', function (req, res) {
-    // res.sendfile(__dirname + '/public/single_chat.html')
     fs.readFile(__dirname + '/public/single_chat.html', function (err, data) {
         if(err) return res.status(500).send("Error");
         res.send(data.toString());

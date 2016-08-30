@@ -119,27 +119,24 @@ var Promise = require('promise')
 io.sockets.on('connection', function (socket) {
     socket.on('send_msg', function (data , lang, target, src) {
         console.log('msg received');
-        console.log(target);
-        console.log(src);
+        console.log(target);//debug
+        console.log(src);//debug
+        console.log(lang);//debug
         if(target in rooms){
             translateMeesage(data ,lang).then(
                 function (value) {
                     console.log(value);//debug
-                    // console.log(rooms[target]);//debug
-                    rooms[target].emit('new_msg', value, src);//<<<<<<<<<<<THE PROBLEM IS HERE
-                    // rooms[target].emit('private_msg', {msg: value});//<<<<<<<<<<<THE PROBLEM IS HERE
-                    socket.emit('new_msg', value, target);
+                    rooms[target].emit('new_msg', value, src);
+                    socket.emit('new_msg', data, target);
                 }, function (reason) {
                     console.error("Cant translate the message")
                     rooms[target].emit('new_msg', "Cant translate the message", src)
                 }
-            )
+            );
             console.log('msg sent');
         } else {
             socket.emit('new_msg', target + " is offline, can't send a message");
         }
-
-        //socket.broadcast.emit(new_msg, data); --> send message to all users EXCEPT ME connected to the chat, can be used for groups later on
     });
 
     socket.on('new socket', function(data, err){
@@ -155,6 +152,8 @@ io.sockets.on('connection', function (socket) {
 
 
 function translateMeesage(data , language) {
+    console.log('translateMessage');
+    console.log('language');
     return new Promise(
         function (resolve, reject) {
             var key = 'trnsl.1.1.20160826T142745Z.8d420fa138bc4da9.865d6e5947ccfdbd6e683f21f32abf96cd8e4e07'
