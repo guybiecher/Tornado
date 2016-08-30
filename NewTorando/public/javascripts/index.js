@@ -1,5 +1,7 @@
+var myName = '';
 var $targetUser = '';
 var socket;
+var activeChat = '';
 
 function showChats(){
     $('#contacts_list').css('display', 'none');
@@ -23,6 +25,16 @@ function hideAll(){
     $('#contacts_list').css('display', 'none');
     $('#chat_list').css('display', 'none');
     $('#settings').css('display', 'none');
+    $('#chat_container').css('display', 'none');
+}
+
+function showChat() {
+    $('#contacts_list').css('display', 'none');
+    $('#chat_list').css('display', 'none');
+    $('#settings').css('display', 'none');
+    $('#header').css('display', 'none');
+    $('#chat_container').css('display', 'block');
+    $('#' + activeChat).css('display', 'block');
 }
 
 function logout(userName) {
@@ -37,30 +49,26 @@ function logout(userName) {
 
 function openNewChat(userName){
    console.log(userName + ' openNewChat OK');//debug
-    $targetUser = userName;
     $('#chat_list').append('<li><button onclick="openChat(\'' + userName + '\')">' + userName + '</button></li>');
     openChat(userName);
 };
 
 function openChat(userName){
     console.log(userName + ' openChat OK');//debug
+    hideAll();
+    showChat();
+    activeChat = userName;
+    $targetUser = userName;
     $.post('/chat', {user: userName}, function (data, status) {
-        if(status === 'success'){
-            // $('#active_chat').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
-            // location.replace('http://localhost:3000');
-            // window.open('http://localhost:3000/chat', '_self');
-            // window.open('http://localhost:3000/chat');
-        } else {
-            // alert('chat open failed, please try again');
-        }
     });
 
     $.get('/chat', function (data, status) {
+        console.log('/chat request:')
         if(status === 'success'){
-            // $('#active_chat').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
+            $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
             // location.replace('http://localhost:3000');
             // window.open('http://localhost:3000/chat', '_self');
-            window.open('http://localhost:3000/chat');
+            // window.open('http://localhost:3000/chat');
         } else {
             alert('chat open failed, please try again');
         }
@@ -88,10 +96,10 @@ $(function($){
         if(status === 'success'){
             contactList.append('<ul>')
             for(var i in data){
-                var socketID = data[i].socket_id;
+                // var socketID = data[i].socket_id;
                 var user = data[i].user;
-                var lang = data[i].language;
-                var status = data[i].status;
+                // var lang = data[i].language;
+                // var status = data[i].status;
                 var str = '<li><button onclick="openNewChat(\'' + user + '\')">' + user + '</button></li>';
 
                 contactList.append(str);
@@ -102,26 +110,60 @@ $(function($){
         }
     });
 
-    /*single chat js code*/
-
-    //var socket = io.connect();
-    var $msgBtn= $('#caht_send_btn');
-    var $txtInput = $('#chat_textbox');
-    var $chat = $('#chat_body');
-    var $lang = $('#language');
-
-
-    $msgBtn.click(function(e){
-        e.preventDefault();
-        socket.emit('send_msg', $txtInput.val() , $lang.val(), $targetUser);
-        console.log('msg sent');//debug
-        $txtInput.val('');
+    $.get('/getMyName', function (data) {
+        myName = data;
     });
 
-    socket.on('new_msg', function(data){
+
+
+    socket.on('new_msg', function(data, src){
         console.log('msg recieved');//debug
-        console.log($targetUser);//debug
-        $chat.append(data + "</br>");
+        console.log(data);//debug
+        console.log(src);//debug
+
+        $('#' + src).find('#chat_body').append(data + "</br>");
     });
+
 
 });
+
+/*single chat js code*/
+
+function sendMsg() {
+    var target = activeChat;
+    var $txtInput = $('#' + target).find('#chat_textbox');
+    var $chat = $('#' + target).find('#chat_body');
+    var $lang = $('#' + target).find('#chat_body');
+
+    // $.get('/getTarget', function (data, status) {
+    //     console.log('/getTarget request:')
+    //     if(status === 'success'){
+    //         target = data;
+    //         console.log(data);
+    //         $txtInput = $('#' + target).find('#chat_textbox');
+    //         console.log($txtInput);
+    //         $chat = $('#' + target).find('#chat_body');
+    //         $lang = $('#' + target).find('#chat_body');
+    //     } else {
+    //         target = 'User is offline and can\'t get messages';
+    //     }
+    // })
+    console.log('send message request:')
+    console.log(target)
+    socket.emit('send_msg', $txtInput.val() , $lang.val(), target, myName);
+    console.log('msg sent');//debug
+    $txtInput.val('');
+}
+
+function prevTrans() {
+    var text = $("#chat_textbox").val();
+
+};
+
+function backToLobby (){
+    $('#' + activeChat).css('display', 'none');
+    showChats();
+    // $('.chat_window').css('display', 'none');
+    // $('#chat_list').css('display', 'none');
+
+};

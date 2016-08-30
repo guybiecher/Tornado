@@ -117,19 +117,21 @@ var Promise = require('promise')
 
 
 io.sockets.on('connection', function (socket) {
-    socket.on('send_msg', function (data , lang, target) {
+    socket.on('send_msg', function (data , lang, target, src) {
         console.log('msg received');
         console.log(target);
+        console.log(src);
         if(target in rooms){
             translateMeesage(data ,lang).then(
                 function (value) {
-                    console.log(value);
-                    console.log(rooms[target]);
-                    rooms[target].emit('new_msg', value);//<<<<<<<<<<<THE PROBLEM IS HERE
-                    socket.emit('new_msg', value);
+                    console.log(value);//debug
+                    // console.log(rooms[target]);//debug
+                    rooms[target].emit('new_msg', value, src);//<<<<<<<<<<<THE PROBLEM IS HERE
+                    // rooms[target].emit('private_msg', {msg: value});//<<<<<<<<<<<THE PROBLEM IS HERE
+                    socket.emit('new_msg', value, target);
                 }, function (reason) {
                     console.error("Cant translate the message")
-                    rooms[target].emit('new_msg', "Cant translate the message")
+                    rooms[target].emit('new_msg', "Cant translate the message", src)
                 }
             )
             console.log('msg sent');
@@ -146,35 +148,9 @@ io.sockets.on('connection', function (socket) {
         } else {
             socket.name = data;
             rooms[socket.name] = socket;
-            // var connection = createConnection();
-            // var qry = "UPDATE Users SET status=1, socket_id = ? WHERE user=?";
-            // var userQery = '' + data;
-            // connection.query(qry,[socket.id, userQery], function(err,row){
-            //     if(err){
-            //         console.log('query failed');
-            //     }
-            // });
-            // connection.end();
         }
         console.log(Object.keys(rooms));
     });
-
-    // socket.on('set target', function (data, callback) {
-    //     console.log('set target event:')
-    //     console.log(data)
-    //     target = data;
-    // })
-
-    // socket.on('logout', function (data, callback) {
-    //     if(err){
-    //         callback(false);
-    //     } else {
-    //         callback(true);
-    //         if(!socket.name) return;
-    //         delete rooms[socket.name];
-    //     }
-    // })
-
 });
 
 
@@ -194,5 +170,3 @@ function translateMeesage(data , language) {
             })
         })
 }
-
-// module.exports = rooms;

@@ -5,20 +5,13 @@
 
     <title>Tornado chat view</title>
 
-    <script type="text/javascript" src="javascripts/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
-    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
-    <script type="text/javascript" src="javascripts/index.js"></script>
-    <script  type="text/javascript" src="javascripts/socket.io.js"></script>
-    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
-
-
 <body>
+    <div data-role="panel" id="trns_prev_panel">
+        <!-- panel content goes here it will display the translation preview-->
+    </div><!-- /panel -->
+
     <div data-role="page">
         <div data-role="header" data-position="fixed" data-theme="b">
             <img src="images/smiley.gif" id="logout_icon" style="border-radius:50%; width:50px; height:50px; float:left" onclick="logout()">
@@ -26,38 +19,44 @@
                      <input type="search" name="search-1" id="search-1" value="">
             </form>
 
-            <div data-role="navbar" data-iconpos="left">
-                <ul>
-                    <li><button type="button" onclick="showContacts()" class="nav_button">Contacts</button></li>
-                    <li><button type="button" onclick="showChats()" class="nav_button">Chats</button></li>
-                    <li><button type="button" onclick="showSettings()" class="nav_button" data-icon="gear">Settings</button></li>
-                </ul>
+                <div data-role="navbar" data-iconpos="left">
+                    <ul>
+                        <li><button type="button" onclick="showContacts()" class="nav_button">Contacts</button></li>
+                        <li><button type="button" onclick="showChats()" class="nav_button">Chats</button></li>
+                        <li><button type="button" onclick="showSettings()" class="nav_button" data-icon="gear">Settings</button></li>
+                    </ul>
+                </div>
+            </div> <!--end of div header-->
+
+            <div id="chat_container" style="display: none">
+
+            </div>
+
+            <div id="contacts_list" style="display: none">
+
+            </div> <!--end of div contact list-->
+
+            <div id="chat_list" style="display: block;">
+
+            </div> <!--end of div chats list-->
+
+            <div id="settings" style="display: none">
+
+            </div> <!--end of div settings-->
+
+            <div data-role="footer">
+
+
             </div>
         </div>
+    </div> <!--end od div page-->
 
-        <div id="contacts_list" style="display: none">
-            <ul>
-                <li>
-
-                </li>
-            </ul>
-        </div>
-
-        <div id="chat_list" style="display: block;">
-            <ul>
-
-            </ul>
-
-        </div>
-
-        <div id="settings" style="display: none">
-
-        </div>
-
-        <div data-role="footer">
-
-
-        </div>
-    </div>
+    <script type="text/javascript" src="javascripts/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/index.js"></script>
+    <script  type="text/javascript" src="javascripts/socket.io.js"></script>
+    <link rel="stylesheet" href="stylesheets/style.css" type="text/css">
 </body>
 </html>

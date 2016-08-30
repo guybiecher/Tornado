@@ -175,26 +175,22 @@ app.post('/register', function (req, res) {
 
 });
 
+app.get('/getMyName', function (req, res) {
+    res.send(req.session.user);
+})
+
 app.post('/chat', function (req, res) {
     console.log('yyesss');
-    // fs.readFile(__dirname + '/public/single_chat.html', function (err, data) {
-    //     if(err) return res.status(500).send("Error");
-    //     res.send(data.toString());
-    // });
-    console.log(req.body.user)
+    console.log(req.body.user)//debug
     req.session.target = req.body.user;
-    res.sendfile(__dirname + '/public/single_chat.html')
 });
 
 app.get('/chat', function (req, res) {
-    // console.log('yyesss');
-    // fs.readFile(__dirname + '/public/single_chat.html', function (err, data) {
-    //     if(err) return res.status(500).send("Error");
-    //     res.send(data.toString());
-    // });
-    // console.log(req.body.user)
-    // req.session.target = req.body.user;
-    res.sendfile(__dirname + '/public/single_chat.html')
+    // res.sendfile(__dirname + '/public/single_chat.html')
+    fs.readFile(__dirname + '/public/single_chat.html', function (err, data) {
+        if(err) return res.status(500).send("Error");
+        res.send(data.toString());
+    });
 });
 
 app.get('/getTarget', function (req, res) {
@@ -202,16 +198,21 @@ app.get('/getTarget', function (req, res) {
     console.log(req.session);
     console.log(req.session.target);
     console.log(Object.keys(rooms));
-    if(req.session.target in rooms){
-        console.log('BLAT 2');
-        res.statusCode = 200;
-        res.send(req.session.target);
+    if(typeof req.session.target != 'undefined'){
+        if(req.session.target in rooms){
+            console.log('BLAT 2');
+            res.statusCode = 200;
+            res.send(req.session.target);
+        } else {
+            console.log('BLAT 3');
+            res.statusCode = 400;
+            res.send('User is offline');
+        }
     } else {
-        console.log('BLAT 3');
-        res.statusCode = 400;
-        res.send('User is offline');
+        res.send('Error getting target user');
     }
-})
+});
+
 
 app.get('/session', function(req, res){
     if(typeof(req.session.user) !== 'undefined'){
