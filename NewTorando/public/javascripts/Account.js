@@ -39,3 +39,14 @@ function arrowAccount(){
         window.open('/settings', '_self');
 
 };
+
+function smiley() {
+    alert("dasdadas")
+    var temp =  $("#profile_pic")
+    alert(temp)
+    document.getElementById('profile_pic').html('<img src="images/dog.jpeg" id="logout_icon" style="border-radius:50%; width:50px; height:50px; float:left" >')
+
+    $.post('/updateProfilePic', {picPath : "/Users/tomerbarshishat/WebstormProjects/Tornado/NewTorando/public/images/smiley.gif" }, function (data, status){
+
+    });
+}

@@ -15,6 +15,7 @@ var fs = require('fs');
 var www = require('./bin/www');
 var rooms = www.rooms;
 var session = require('express-session');
+var profile_pic;
 
 
 
@@ -132,8 +133,10 @@ app.post('/updatelanguage', function (req, res) {
 });
 
 app.post('/updateProfilePic', function (req, res) {
+    console.log("asisudh")
     var connection = createConnection();
     var picPath = req.body.picPath;
+
     var user = req.session.user;
     var query = 'UPDATE Users SET profile_pic = ? WHERE user = ?;';
 
