@@ -91,7 +91,6 @@ function openChat(userName){
 };
 
 $(function($){
-    // var socket = io.connect();
     socket = io.connect();
     $.get('/session', function(data, status){
         console.log(data);

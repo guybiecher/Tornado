@@ -125,32 +125,51 @@ app.post('/updatelanguage', function (req, res) {
             loggerInfo.info("Language user select successfully")
             res.send(rows)
         }
-    })
+    });
     connection.end();
 
 
-})
+});
+
+app.post('/updateProfilePic', function (req, res) {
+    var connection = createConnection();
+    var picPath = req.body.picPath;
+    var user = req.session.user;
+    var query = 'UPDATE Users SET profile_pic = ? WHERE user = ?;';
+
+    connection.query(query, [picPath, user], function (err, rows, fields) {
+        if (err) {
+            loggerInfo.info(err.message)
+            res.send("Cant update profile picture")
+        }
+        else {
+            loggerInfo.info("Updated profile pic successfully")
+            res.send("profile pic updated successfully")
+        }
+
+    });
+    connection.end();
+});
 
 app.post('/updateUser', function (req, res) {
-    console.log("leh zdaien")//debug
-    var connection = createConnection()
-    var olduser = req.session.user
-    var user = req.body.name
-    var password = req.body.password
+    var connection = createConnection();
+    var olduser = req.session.user;
+    var user = req.body.name;
+    var password = req.body.password;
 
-    var query = 'UPDATE Users SET user = ? , password = ? WHERE user = ?;'
+    var query = 'UPDATE Users SET user = ? , password = ? WHERE user = ?;';
 
     connection.query(query, [user, password, olduser], function (err, rows, fields) {
         if (err) {
-            loggerInfo.info(err.message)
-            res.send("Cant update user")
+            loggerInfo.info(err.message);
+            res.send("Cant update user");
         }
         else {
-            loggerInfo.info("Update successfully user")
-            req.session.reset()
-            req.session.user = user
-            req.session.password = password
-            res.send("User name and password updated")
+            loggerInfo.info("Update successfully user");
+            req.session.reset();
+            req.session.user = user;
+            req.session.password = password;
+            res.send("User name and password updated");
         }
 
     })
@@ -159,13 +178,13 @@ app.post('/updateUser', function (req, res) {
 })
 
 app.post('/register', function (req, res) {
-    loggerInfo.info("User try to register")
-    loggerInfo.info(req.body.name)
-    loggerInfo.info(req.body.password)
+    loggerInfo.info("User try to register");
+    loggerInfo.info(req.body.name);
+    loggerInfo.info(req.body.password);
 
-    var name = req.body.name
-    var passowrd = req.body.password
-    var connection = createConnection()
+    var name = req.body.name;
+    var passowrd = req.body.password;
+    var connection = createConnection();
 
     var post = {user: name, password: passowrd, language: "en"};
     connection.query('INSERT INTO Users SET ?', post, function (err, rows, fields) {
@@ -178,8 +197,8 @@ app.post('/register', function (req, res) {
         }
         else {
             loggerInfo.info(err.message);
-            res.statusCode = 400
-            res.send("Error to create user " + err.message)
+            res.statusCode = 400;
+            res.send("Error to create user " + err.message);
         }
 
     });
@@ -270,7 +289,7 @@ function createConnection() {
 
 function checkUserOnDB(req, res, user, password, functionName) {
 
-    var connection = createConnection()
+    var connection = createConnection();
 
     loggerInfo.info(user);
     loggerInfo.info(password);
