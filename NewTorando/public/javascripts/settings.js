@@ -1,6 +1,4 @@
-/**
- * Created by tomerbarshishat on 27/08/2016.
- */
+
 
 
 function Account(){
@@ -21,16 +19,6 @@ function Account(){
 };
 
 
-
-function logout() {
-    console.log("logout")
-;    $.get('/logout' , function (data,status) {
-
-        window.open('http://localhost:3000/login', '_self')
-
-    })
-
-}
 function Translate(){
     console.log("tomererTTTTT")
 

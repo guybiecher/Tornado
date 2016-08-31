@@ -1,12 +1,17 @@
+#logoutBtn{
+  float:right;
+  position: relative;
+}
+
 #login_box {
   position:fixed;
-  left:40%;
+  left: 2%;
   top:31%;
   background-color:white;
   border-radius: 25px;
   border: 2px solid #73AD21;
   padding: 20px;
-  width: 372px;
+  width: 85%;
   height: 126px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

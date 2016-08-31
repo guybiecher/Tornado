@@ -49,6 +49,8 @@ app.use(session({
     secret: 'random_string_goes_here',
     duration: 30 * 60 * 1000,
     activeDuration: 5 * 60 * 1000,
+    resave: false,
+    saveUninitialized: true,
 }));
 
 //get and post request
@@ -63,17 +65,14 @@ app.get('/login', function (req, res) {
 })
 
 app.get('/logout', function (req, res) {
-
-
+    delete rooms[req.session.user];
     req.logout;
     req.session.destroy(function (err) {
-        //console.log(req.session.toString())
-        res.redirect('/login'); //Inside a callback… bulletproof!
+    res.redirect('/login');
     });
 });
 app.get('/account', function (req, res) {
         res.sendFile(__dirname + '/public/Account.html', '_self')
-
 })
 
 app.get('/translate', function (req, res) {
@@ -273,9 +272,6 @@ app.get('/contacts', function(req, res){
     });
     connection.end();
 });
-
-//
-
 
 //create connection to DB
 function createConnection() {

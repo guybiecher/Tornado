@@ -135,7 +135,7 @@ io.sockets.on('connection', function (socket) {
             );
             console.log('msg sent');
         } else {
-            socket.emit('new_msg', target + " is offline, can't send a message");
+            socket.emit('new_msg', target + " is offline, can't send a message", target);
         }
     });
 

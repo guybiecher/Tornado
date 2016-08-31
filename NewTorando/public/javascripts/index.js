@@ -4,20 +4,18 @@ var socket;
 var activeChat = '';
 
 function showChats(){
-    $('#contacts_list').css('display', 'none');
+    hideAll();
     $('#chat_list').css('display', 'block');
-    $('#settings').css('display', 'none');
+
 };
 
 function showContacts (){
+    hideAll()
     $('#contacts_list').css('display', 'block');
-    $('#chat_list').css('display', 'none');
-    $('#settings').css('display', 'none');
 };
 
 function showSettings(){
-    $('#contacts_list').css('display', 'none');
-    $('#chat_list').css('display', 'none');
+    hideAll()
     $('#settings').css('display', 'block');
 };
 
@@ -26,34 +24,25 @@ function hideAll(){
     $('#chat_list').css('display', 'none');
     $('#settings').css('display', 'none');
     $('#chat_container').css('display', 'none');
+    $('#' + activeChat).css('display', 'none');
 }
 
 function showChat() {
-    $('#contacts_list').css('display', 'none');
-    $('#chat_list').css('display', 'none');
-    $('#settings').css('display', 'none');
+    hideAll()
     $('#header').css('display', 'none');
     $('#chat_container').css('display', 'block');
     $('#' + activeChat).css('display', 'block');
-}
-
-function logout(userName) {
-    // socket.emit('logout', userName, function (callback) {
-    //     if(callback){
-    //         //TODO:complete end session and get login page
-    //     } else {
-    //         alert('Logout faild! Please try again');
-    //     }
-    // });
 }
 
 function openNewChat(userName){
    console.log(userName + ' openNewChat OK');//debug
     $('#chat_list').append('<li><button onclick="reopenChat(\'' + userName + '\')">' + userName + '</button></li>');
     openChat(userName);
+
+
 };
 
-function reopenNewChat(userName){
+function reopenChat(userName){
     console.log(userName + ' openNewChat OK');//debug
     activeChat = userName;
     $targetUser = userName;
@@ -172,3 +161,11 @@ function backToLobby (){
     // $('#chat_list').css('display', 'none');
 
 };
+
+function logout() {
+    console.log("logout")
+    socket.emit('logout', myName);
+    $.get('/logout' , function (data,status) {
+        window.open('http://localhost:3000/login', '_self')
+    })
+}
