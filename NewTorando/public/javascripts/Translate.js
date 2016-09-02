@@ -1,21 +1,25 @@
-/**
- * Created by tomerbarshishat on 27/08/2016.
- */
+
 function updatelanguage() {
 
     var $lang = $('#language');
-    console.log($lang.val())
+    var $onOffBtn = $('#onOffBtn');
+    console.log($lang.val());
+    console.log($onOffBtn.val());
     $.post('/updatelanguage',
         {
-            language : $lang.val()
+            language : $lang.val(),
+            onOffBtn : $onOffBtn.val()
         }),
         function (data) {
             if(data === "Cant get language"){
-                alert("choose other language")
+                alert("Language update failed. Please choose another language")
+            } else {
+                var socket = io.connect();
+                socket.emit('update language', $lang, $onOffBtn, data);
+                socket.end();
+                alert("language updated")
             }
-            alert("language choose")
         }
-    
 }
 
 function arrowAccount(){

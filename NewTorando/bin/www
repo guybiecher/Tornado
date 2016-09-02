@@ -123,16 +123,32 @@ io.sockets.on('connection', function (socket) {
         console.log(src);//debug
         console.log(lang);//debug
         if(target in rooms){
-            translateMeesage(data ,lang).then(
-                function (value) {
-                    console.log(value);//debug
-                    rooms[target].emit('new_msg', value, src);
-                    socket.emit('new_msg', data, target);
-                }, function (reason) {
-                    console.error("Cant translate the message")
-                    rooms[target].emit('new_msg', "Cant translate the message", src)
-                }
-            );
+            console.log(rooms[target].lang)
+            if(rooms[target].autoTrans){
+                console.log('auto trans on')
+                translateMeesage(data ,rooms[target].lang).then(
+                    function (value) {
+                        console.log(value);//debug
+                        rooms[target].emit('new_msg', value, src);
+                        socket.emit('new_msg', data, target);
+                    }, function (reason) {
+                        console.error("Cant translate the message")
+                        rooms[target].emit('new_msg', "Cant translate the message", src)
+                    }
+                );
+            } else {
+                console.log('auto trans off')
+                translateMeesage(data ,lang).then(
+                    function (value) {
+                        console.log(value);//debug
+                        rooms[target].emit('new_msg', value, src);
+                        socket.emit('new_msg', data, target);
+                    }, function (reason) {
+                        console.error("Cant translate the message")
+                        rooms[target].emit('new_msg', "Cant translate the message", src)
+                    }
+                );
+            }
             console.log('msg sent');
         } else {
             socket.emit('new_msg', target + " is offline, can't send a message", target);
@@ -145,9 +161,41 @@ io.sockets.on('connection', function (socket) {
         } else {
             socket.name = data;
             rooms[socket.name] = socket;
+            var connection = createConnection();
+            connection.query('SELECT * FROM Users WHERE user = ?', data, function(err, rows){
+                console.log('rooms.lnaguage check')
+                console.log(rows[0])
+                if(!err){
+                    rooms[data].lang = rows[0].language;
+                    rooms[data].autoTrans = rows[0].auto_translate;
+                    console.log(rooms[data].autoTrans)
+                    console.log(rooms[data].lang)
+                } else {
+                    console.log('socket request: new socket - query failed');
+                }
+            });
+            connection.end();
         }
         console.log(Object.keys(rooms));
     });
+
+    socket.on('update language', function (lang, autoTranslate, user, err) {
+        rooms[user].lang = lang;
+        if(autoTranslate === "on"){
+            rooms[user].autoTrans = true;
+        } else {
+            rooms[user].autoTrans = false;
+        }
+    })
+
+    socket.on('logout', function (data, err) {
+        if(err){
+            console.log('socket request: logout failed');
+        } else {
+            delete rooms[data];
+            console.log(Object.keys(rooms));
+        }
+    })
 });
 
 

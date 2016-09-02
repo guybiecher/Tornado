@@ -112,18 +112,24 @@ app.post('/updatelanguage', function (req, res) {
     var connection = createConnection()
     var user = req.session.user
     var language = req.body.language
+    var autoTranslate;
+    if(req.body.onOffBtn === "on"){
+        autoTranslate = true;
+    } else {
+        autoTranslate = false;
+    }
     console.log(language)
 
-    var query = 'UPDATE Users SET language = ? WHERE user = ?;'
+    var query = 'UPDATE Users SET language = ?, auto_translate = ? WHERE user = ?;'
 
-    connection.query(query,[language , user],function (err ,rows ,fileds) {
+    connection.query(query,[language , autoTranslate, user],function (err ,rows ,fileds) {
         if (err) {
             loggerInfo.info(err.message)
             res.send("Cant get language")
         }
         else{
             loggerInfo.info("Language user select successfully")
-            res.send(rows)
+            res.send(user)
         }
     });
     connection.end();
@@ -227,17 +233,17 @@ app.get('/chat', function (req, res) {
 });
 
 app.get('/getTarget', function (req, res) {
-    console.log('BLAT 1');
+    console.log('BLAT 1');//debug
     console.log(req.session);
     console.log(req.session.target);
     console.log(Object.keys(rooms));
     if(typeof req.session.target != 'undefined'){
         if(req.session.target in rooms){
-            console.log('BLAT 2');
+            console.log('BLAT 2');//debug
             res.statusCode = 200;
             res.send(req.session.target);
         } else {
-            console.log('BLAT 3');
+            console.log('BLAT 3');//debug
             res.statusCode = 400;
             res.send('User is offline');
         }

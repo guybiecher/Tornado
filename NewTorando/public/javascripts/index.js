@@ -35,48 +35,62 @@ function showChat() {
 }
 
 function openNewChat(userName){
+    hideAll();
    console.log(userName + ' openNewChat OK');//debug
-    $('#chat_list').append('<li><button onclick="reopenChat(\'' + userName + '\')">' + userName + '</button></li>');
+    $('#chat_list').append('<li><button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')">' + userName + '</button></li>');//last change was here userName+_btn
     openChat(userName);
-
-
 };
 
 function reopenChat(userName){
+    hideAll();
     console.log(userName + ' openNewChat OK');//debug
     activeChat = userName;
     $targetUser = userName;
-
     $.post('/chat', {user: userName}, function (data, status) {
     });
-
+    $('#' + userName + '_btn').css('color', 'black');
     showChat();
-};
+}
 
 function openChat(userName){
     console.log(userName + ' openChat OK');//debug
     hideAll();
-    showChat();
     activeChat = userName;
     $targetUser = userName;
     $.post('/chat', {user: userName}, function (data, status) {
     });
 
     $.get('/chat', function (data, status) {
-        console.log('/chat request:')
+        console.log('/chat request:');
         if(status === 'success'){
             $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
-            // location.replace('http://localhost:3000');
-            // window.open('http://localhost:3000/chat', '_self');
-            // window.open('http://localhost:3000/chat');
         } else {
             alert('chat open failed, please try again');
         }
     });
-    // $targetUser = userName;
-    // hideAll();
-    // socket.emit('set target', $targetUser);
+    showChat();
+};
 
+function openHiddenChat(userName){
+    console.log(userName + ' openHiddenChat OK');//debug
+    $targetUser = userName;
+    $.post('/chat', {user: userName}, function (data, status) {
+    });
+
+    $.get('/chat', function (data, status) {
+        console.log('/chat request:');
+        if(status === 'success'){
+            $('#chat_container').append('<div style="display: none; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
+        } else {
+            alert('chat open failed, please try again');
+        }
+    });
+};
+
+function openNewHiddenChat(userName){
+    console.log(userName + ' openNewHiddenChat OK');//debug
+    $('#chat_list').append('<li><button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')" style="color:greenyellow">' + userName + '</button></li>');//last change was here userName+_btn
+    openHiddenChat(userName);
 };
 
 $(function($){
@@ -113,7 +127,21 @@ $(function($){
         console.log('msg recieved');//debug
         console.log(data);//debug
         console.log(src);//debug
-        $('#' + src).find('#chat_body').append(data + "</br>");
+        var chatWindow = $('#' + src);
+        console.log(chatWindow);
+
+        if(!chatWindow.length){
+            openNewHiddenChat(src, data);
+            $('#' + src).find('#chat_body').append(data + "</br>"); //not working
+        } else {
+            if(chatWindow.css("display") === "block"){
+                chatWindow.find('#chat_body').append(data + "</br>");
+            } else {
+                chatWindow.find('#chat_body').append(data + "</br>");
+                $('#' + src + '_btn').css('color', 'greenyellow');
+            }
+        }
+
     });
 });
 
@@ -125,19 +153,6 @@ function sendMsg() {
     var $chat = $('#' + target).find('#chat_body');
     var $lang = $('#' + target).find('#language');
 
-    // $.get('/getTarget', function (data, status) {
-    //     console.log('/getTarget request:')
-    //     if(status === 'success'){
-    //         target = data;
-    //         console.log(data);
-    //         $txtInput = $('#' + target).find('#chat_textbox');
-    //         console.log($txtInput);
-    //         $chat = $('#' + target).find('#chat_body');
-    //         $lang = $('#' + target).find('#chat_body');
-    //     } else {
-    //         target = 'User is offline and can\'t get messages';
-    //     }
-    // })
     console.log('send message request:');
     console.log(target);
     console.log($txtInput);
@@ -156,9 +171,8 @@ function prevTrans() {
 function backToLobby (){
     $('#' + activeChat).css('display', 'none');
     $('#header').css('display', 'block');
+    $('#' + activeChat + '_btn').css('color', black);
     showChats();
-    // $('.chat_window').css('display', 'none');
-    // $('#chat_list').css('display', 'none');
 
 };
 

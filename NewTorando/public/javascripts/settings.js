@@ -1,6 +1,3 @@
-
-
-
 function Account(){
     console.log("tomerer")
     $(document).ready(function() {
@@ -11,9 +8,6 @@ function Account(){
             if (data === "Didn't login") {
                 alert("momsda")
             }
-
-
-
         });
     });
 };
