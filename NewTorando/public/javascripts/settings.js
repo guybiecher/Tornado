@@ -42,3 +42,9 @@ function About(){
         window.open('/About', '_self')
     });
 };
+
+function arrowSettings() {
+    window.open('/home', '_self');
+
+
+}

@@ -176,10 +176,11 @@ io.sockets.on('connection', function (socket) {
             var connection = createConnection();
             connection.query('SELECT * FROM Users WHERE user = ?', data, function(err, rows){
                 console.log('rooms.lnaguage check')
-                console.log(rows[0])
                 if(!err){
                     rooms[data].lang = rows[0].language;
                     rooms[data].autoTrans = rows[0].auto_translate;
+                    rooms[data].profilePic = rows[0].profile_pic;
+
                     console.log(rooms[data].autoTrans)
                     console.log(rooms[data].lang)
                 } else {
@@ -207,6 +208,10 @@ io.sockets.on('connection', function (socket) {
             delete rooms[data];
             console.log(Object.keys(rooms));
         }
+    })
+
+    socket.on('update profile pic', function (pic, user) {
+        rooms[user].profilePic = pic;
     })
 });
 

@@ -1,3 +1,16 @@
+
+$(function($) {
+    $.get('/loadpic', function (data, status) {
+        console.log("data check")
+        console.log(data.toString())
+        var pic = data.toString()
+        console.log(pic)
+        $("#profile_pic").html( "<img src=" + pic + "  id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+
+
+    });
+});
+
 function update() {
     var updatePerson = {
         name: $("#userName").val(),
@@ -41,21 +54,68 @@ function arrowAccount(){
 };
 
 function smiley() {
-    alert("dasdadas")
-    var temp =  $("#profile_pic")
-    alert(temp)
-    document.getElementById('profile_pic').html('<img src="images/dog.jpeg" id="logout_icon" style="border-radius:50%; width:50px; height:50px; float:left" >')
+    modal.style.display = "none";
 
-    $.post('/updateProfilePic', {picPath : "/Users/tomerbarshishat/WebstormProjects/Tornado/NewTorando/public/images/smiley.gif" }, function (data, status){
+    $("#profile_pic").html( "<img src= 'images/smiely.gif' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+    var pic = 'images/smiely.gif';
+    $.post('/updateProfilePic', {picPath : pic }, function (data, status) {
+        socket.emit('update profile pic', pic, data);
 
     });
+
 }
 function dog() {
-    alert("ok");
+    modal.style.display = "none";
 
-    var pic = "dog.jpeg"
+    $("#profile_pic").html( "<img src= 'images/dog.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+    var pic = 'images/dog.jpeg';
     $.post('/updateProfilePic', {picPath : pic }, function (data, status) {
+        socket.emit('update profile pic', pic, data);
 
 
     });
+
+
+}
+
+function sunglass() {
+    modal.style.display = "none";
+
+    $("#profile_pic").html( "<img src= 'images/sunglass.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+    var pic = 'images/sunglass.jpeg';
+    $.post('/updateProfilePic', {picPath : pic }, function (data, status) {
+        socket.emit('update profile pic', pic, data);
+
+
+    });
+
+
+}
+
+function hloah() {
+    modal.style.display = "none";
+
+    $("#profile_pic").html( "<img src= 'images/hloah.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+    var pic = 'images/hloah.jpeg';
+    $.post('/updateProfilePic', {picPath : pic }, function (data, status) {
+        socket.emit('update profile pic', pic, data);
+    });
+
+
+
+
+}
+
+function teen() {
+    modal.style.display = "none";
+
+    $("#profile_pic").html( "<img src= 'images/teen.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+    var pic = 'images/teen.jpeg';
+    $.post('/updateProfilePic', {picPath : pic }, function (data, status) {
+        socket.emit('update profile pic', pic, data);
+
+
+    });
+
+
 }

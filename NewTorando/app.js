@@ -61,7 +61,7 @@ app.get('/register', function (req, res) {
 });
 
 app.get('/login', function (req, res) {
-    res.sendfile(__dirname + '/public/login.html')
+    res.sendFile(__dirname + '/public/login.html')
 });
 
 app.get('/logout', function (req, res) {
@@ -81,12 +81,13 @@ app.get('/translate', function (req, res) {
 
 
 app.post('/login', function (req, res) {
+
     checkUserOnDB(req, res, req.body.name, req.body.password, "login");
 });
 
 app.get('/settings', function (req, res) {
     console.log(req.session);
-    res.sendfile(__dirname + '/public/settings.html')
+    res.sendFile(__dirname + '/public/settings.html')
 });
 
 app.get('/about', function (req, res) {
@@ -145,8 +146,9 @@ app.post('/updatelanguage', function (req, res) {
 app.post('/updateProfilePic', function (req, res) {
     var connection = createConnection();
     var picPath = req.body.picPath;
+    console.log("pic paht:   ")
     console.log(picPath)
-    var user = req.session.user;
+    user = req.session.user;
     var query = 'UPDATE Users SET profile_pic = ? WHERE user = ?;';
 
     connection.query(query, [picPath, user], function (err, rows, fields) {
@@ -156,7 +158,8 @@ app.post('/updateProfilePic', function (req, res) {
         }
         else {
             loggerInfo.info("Updated profile pic successfully")
-            res.send("profile pic updated successfully")
+            rooms[req.session.user].profilePic = picPath
+            res.send(user)
         }
 
     });
@@ -218,7 +221,10 @@ app.post('/register', function (req, res) {
     connection.end();
 
 });
+app.get('/pic' , function (req, res) {
 
+
+});
 app.get('/getMyName', function (req, res) {
     res.send(req.session.user);
 })
@@ -265,6 +271,14 @@ app.get('/session', function(req, res){
         res.statusCode = 400;
         res.send('Oops! Something went wrong. Please loguot and login again');
     }
+});
+
+app.get('/loadpic', function (req, res) {
+    console.log("rooms detals")
+    console.log(rooms[req.session.user])
+    var pic = rooms[req.session.user].profilePic;
+    res.send(pic)
+
 });
 
 app.get('/contacts', function(req, res){
