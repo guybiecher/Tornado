@@ -30,7 +30,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -39,8 +38,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-//use routers
-// app.use('/', routes);
 app.use('/users', users);
 
 //use session cookie
@@ -72,7 +69,7 @@ app.get('/logout', function (req, res) {
     });
 });
 app.get('/account', function (req, res) {
-        res.sendFile(__dirname + '/public/Account.html', '_self')
+        res.sendFile(__dirname + '/public/Account.html')
 });
 
 app.get('/translate', function (req, res) {
@@ -80,10 +77,7 @@ app.get('/translate', function (req, res) {
 });
 
 
-app.post('/login', function (req, res) {
 
-    checkUserOnDB(req, res, req.body.name, req.body.password, "login");
-});
 
 app.get('/settings', function (req, res) {
     console.log(req.session);
@@ -112,6 +106,11 @@ app.get('/home', function (req, res) {
         loggerInfo.info("User not login");
         res.redirect("/login")
     }
+});
+
+app.post('/login', function (req, res) {
+
+    checkUserOnDB(req, res, req.body.name, req.body.password, "login");
 });
 
 app.post('/updatelanguage', function (req, res) {
@@ -181,7 +180,7 @@ app.post('/updateUser', function (req, res) {
         }
         else {
             loggerInfo.info("Update successfully user");
-            req.session.reset();
+            req.session.reset;
             req.session.user = user;
             req.session.password = password;
             res.send("User name and password updated");
@@ -221,6 +220,11 @@ app.post('/register', function (req, res) {
     connection.end();
 
 });
+app.get('/myPic', function (req, res) {
+    var pic = rooms[req.session.user].profilePic
+    res.send(pic)
+
+})
 app.get('/pic' , function (req, res) {
 
 
@@ -230,7 +234,6 @@ app.get('/getMyName', function (req, res) {
 })
 
 app.post('/chat', function (req, res) {
-    console.log('yyesss');
     console.log(req.body.user)//debug
     req.session.target = req.body.user;
     res.send(req.body.user);
@@ -275,8 +278,8 @@ app.get('/session', function(req, res){
 });
 
 app.get('/loadpic', function (req, res) {
-    console.log("rooms detals")
-    console.log(rooms[req.session.user])
+
+    console.log(rooms[req.session.user])//debug
     var pic = rooms[req.session.user].profilePic;
     res.send(pic)
 
@@ -341,12 +344,12 @@ function checkUserOnDB(req, res, user, password, functionName) {
                 }
                 else {
                     loggerInfo.info("Password is not correct")
-                    res.sendFile(__dirname + '/public/login.html', '_self')
+                    res.sendFile(__dirname + '/public/login.html')
                 }
             }
             else {
                 loggerInfo.info("User name doesn't exitst")
-                res.sendFile(__dirname + '/public/login.html', '_self')
+                res.sendFile(__dirname + '/public/login.html')
 
             }
         }

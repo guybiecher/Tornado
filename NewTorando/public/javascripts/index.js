@@ -6,14 +6,17 @@ var chatOpen ;
 var inChat = new Array(100);
 
 function showChats(){
+    $('#header').css('display', 'block');
     chatOpen = true
     hideAll();
     $('#chatSearch_list').empty()
+
     $('#chat_list').css('display', 'block');
 
 }
 
 function showContacts (){
+    $('#header').css('display', 'block');
     chatOpen = false
     hideAll();
     $('#contacts_list').empty()
@@ -21,10 +24,25 @@ function showContacts (){
     $('#contacts_list').css('display', 'block');
 }
 
-function showSettings(){
+function showSettings() {
     hideAll();
+    $('#header').css('display', 'none');
+    $.get('/settings', function (data, status) {
+        if (data === "Didn't login") {
+            alert("momsda")
+        }
+        $('#settings').html(data.toString())
+
+
+    });
     $('#settings').css('display', 'block');
+
 }
+
+
+
+
+
 
 function hideAll(){
     $('#contacts_list').css('display', 'none');
@@ -127,11 +145,13 @@ $(function($){
     // $.get('/contacts', function(data, status){
     //     var contactList = $('#contacts_list');
     //     if(status === 'success'){
+    //         contactList.append('<ul>');
     //         for(var i in data){
     //             var user = data[i].user;
     //             var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
     //             contactList.append(str);
     //         }
+    //         contactList.append('</ul>')
     //     } else {
     //        alert('Error retreaving contacs, please refresh the page');
     //     }
@@ -140,6 +160,8 @@ $(function($){
     $.get('/getMyName', function (data) {
         myName = data;
     });
+
+
 
     socket.on('new_msg', function(data, src){
         console.log('msg recieved');//debug
@@ -162,6 +184,9 @@ $(function($){
 
     });
 });
+
+
+
 
 /*single chat js code*/
 
@@ -222,14 +247,17 @@ function search() {
             chatOpen = false;
             var contactList = $('#contacts_list');
             if(status === 'success'){
+                contactList.append('<ul>')
                 for(var i in data){
                     var user = data[i].user;
                     console.log(user)
                     if(user === search){
-                        var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
+                        var str = '<button onclick="openNewChat(\'' + user + '\')">' + user + '</button>';
                         contactList.append(str);
                     }
+
                 }
+                contactList.append('</ul>')
             } else {
                 alert('Error retreaving contacs, please refresh the page');
             }
@@ -240,27 +268,31 @@ function search() {
         $.get('/contacts', function(data, status){
             var chatList = $('#chatSearch_list');
             if(status === 'success'){
+                chatList.append('<ul>')
                 for(var i in inChat){
                     console.log("testt the search")
                     console.log(inChat.toString())
                     var user = inChat[i];
                     console.log("check user and search" + user + "and" + search)
                     if(user === search){
-                        var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
+                        var str = '<li><button onclick="reopenChat(\'' + user + '\')">' + user + '</button></li>';
                         chatList.append(str);
                     }
 
                 }
+                chatList.append('</ul>')
             } else {
                 alert('Error retreaving contacs, please refresh the page');
             }
 
         });
+        $('#chatSearch_list').css('display', 'block');
     }
-    $('#chatSearch_list').css('display', 'block');
+
 
 
 }
+
 
 function reloadContacts() {
     console.log("ttttttttt")
@@ -268,13 +300,225 @@ function reloadContacts() {
         console.log("fffff")
         var contactList = $('#contacts_list');
         if(status === 'success'){
+            contactList.append('<ul>')
             for(var i in data){
                 var user = data[i].user;
-                var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
+                var str = '<li><button onclick="openNewChat(\'' + user + '\')">' + user + '</button></li>';
                 contactList.append(str);
             }
+            contactList.append('</ul>')
         } else {
             alert('Error retreaving contacs, please refresh the page');
         }
     });
 }
+
+
+
+function Account(){
+    $.get('/loadpic', function (data, status) {
+        console.log("data check")
+        console.log(data.toString())
+        var pic = data.toString()
+        console.log(pic)
+        $("#profile_pic").html( "<img src=" + pic + "  id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+
+
+    });
+    hideAll()
+    console.log("tomerer")
+
+        $.get('/account', function (data, status) {
+            console.log("Status: " + status);
+            console.log("tryyyy");
+            var temp = data;
+            console.log(data.toString());
+            $('#settings').html(data.toString())
+            if (data === "Didn't login") {
+                alert("momsda")
+            }
+        });
+    $('#account').css('display', 'block');
+
+};
+
+
+function Translate(){
+    console.log("tomererTTTTT")
+
+    $.get('/translate' ,function(data, status){
+        console.log("Status: " + status);
+        console.log("tomererTTTTTINTO")
+
+        if(data === "Didn't login"){
+            alert("momsda")
+        }
+
+        $('#settings').html(data.toString());
+    });
+};
+
+
+
+function About(){
+    hideAll()
+    console.log("tomerer")
+
+    $.get('/about' ,function(data, status){
+        console.log("Status: " + status);
+        if(data === "Didn't login"){
+            alert("momsda")
+        }
+        $('#settings').html(data.toString())
+        $('#settings').css('display', 'block');
+    });
+
+};
+
+function arrowSettings() {
+    $('#header').css('display', 'block');
+    hideAll()
+
+    showChats();
+}
+
+
+
+
+
+function update() {
+    var updatePerson = {
+        name: $("#userName").val(),
+        password:$("#password").val(),
+        retypePassword:$("#Confirmpassword").val()
+    }
+
+    if(updatePerson.password != updatePerson.retypePassword){
+        alert("password and the comnfirm isnt match");
+    }
+    console.log(updatePerson.name)
+    console.log(updatePerson.password)
+    $.post('/updateUser',
+        {
+            name: updatePerson.name,
+            password: updatePerson.password
+        },
+        function(data, status){
+            if(data === "Cant update user"){
+                alert("Cant update user");
+            }else{
+                console.log("Status: " + status);
+                window.location.href = 'http://localhost:3000/chat';
+            }
+
+        });
+}
+
+
+
+    function arrow() {
+        hideAll()
+        $('#account').css('display', 'none');
+        $('#settings').css('display', 'block');
+        $.get('/settings', function (data, status) {
+            if (data === "Didn't login") {
+                alert("momsda")
+            }
+            $('#settings').html(data.toString())
+        });
+
+        $('#settings').css('display', 'block');
+
+
+
+    }
+
+    function smiley() {
+        modal.style.display = "none";
+
+        $("#profile_pic").html("<img src= 'images/smiely.gif' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+        var pic = 'images/smiely.gif';
+        $.post('/updateProfilePic', {picPath: pic}, function (data, status) {
+            socket.emit('update profile pic', pic, data);
+
+        });
+
+    }
+
+    function dog() {
+        modal.style.display = "none";
+
+        $("#profile_pic").html("<img src= 'images/dog.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+        var pic = 'images/dog.jpeg';
+        $.post('/updateProfilePic', {picPath: pic}, function (data, status) {
+            socket.emit('update profile pic', pic, data);
+
+
+        });
+
+
+    }
+
+    function sunglass() {
+        modal.style.display = "none";
+
+        $("#profile_pic").html("<img src= 'images/sunglass.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+        var pic = 'images/sunglass.jpeg';
+        $.post('/updateProfilePic', {picPath: pic}, function (data, status) {
+            socket.emit('update profile pic', pic, data);
+
+
+        });
+
+
+    }
+
+    function hloah() {
+        modal.style.display = "none";
+
+        $("#profile_pic").html("<img src= 'images/hloah.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+        var pic = 'images/hloah.jpeg';
+        $.post('/updateProfilePic', {picPath: pic}, function (data, status) {
+            socket.emit('update profile pic', pic, data);
+        });
+
+
+    }
+
+    function teen() {
+        modal.style.display = "none";
+
+        $("#profile_pic").html("<img src= 'images/teen.jpeg' id='logout_icon' style='border-radius:50%; width:50px; height:50px; float:left'>");
+        var pic = 'images/teen.jpeg';
+        $.post('/updateProfilePic', {picPath: pic}, function (data, status) {
+            socket.emit('update profile pic', pic, data);
+
+
+        });
+    }
+
+
+
+function updatelupdatelanguage() {
+
+    var $lang = $('#language');
+    var $onOffBtn = $('#onOffBtn');
+    console.log($lang.val());
+    console.log($onOffBtn.val());
+    $.post('/updatelanguage',
+        {
+            language : $lang.val(),
+            onOffBtn : $onOffBtn.val()
+        }),
+        function (data) {
+            if(data === "Cant get language"){
+                alert("Language update failed. Please choose another language")
+            } else {
+                var socket = io.connect();
+                socket.emit('update language', $lang, $onOffBtn, data);
+                socket.end();
+                alert("language updated")
+            }
+        }
+}
+

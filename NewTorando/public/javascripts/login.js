@@ -20,6 +20,7 @@ function login() {
             if(data === "Didn't login"){
                 alert("login failed")
             }else{
+
                 window.location.href = 'http://localhost:3000/';
             }
 
