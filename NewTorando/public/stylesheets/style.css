@@ -144,3 +144,13 @@
 .chat_header {
 
 }
+
+#chat_title {
+  font-family: ‘Hoefler Text’, Garamond, Georgia, ‘Times New Roman’, Times, serif;
+  color: #076B91;
+  position: fixed;
+  left: 0.3em;
+}
+
+#search {
+}

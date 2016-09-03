@@ -233,6 +233,7 @@ app.post('/chat', function (req, res) {
     console.log('yyesss');
     console.log(req.body.user)//debug
     req.session.target = req.body.user;
+    res.send(req.body.user);
 });
 
 app.get('/chat', function (req, res) {
