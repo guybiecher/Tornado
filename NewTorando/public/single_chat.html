@@ -9,17 +9,15 @@
     </div>
 
     <div id="chat_footer">
-            <input type="text" id="chat_textbox" placeholder="Type your message here">
-            <button id="caht_send_btn" onclick="sendMsg()">Send</button>
-            <!--<button id="chat_trns_preview" onclick="prevTrans()">-->
-                <a href="#trns_prev_panel">T</a>
-            <!--</button>-->
+        <input type="text" id="chat_textbox" placeholder="Type your message here">
+        <button id="caht_send_btn" onclick="sendMsg()">Send</button>
+        <a href="#trns_prev_panel"><button onclick="prevTrans()">T</button></a>
     </div>
 
     <select enable id="language">
+        <option value="en">English</option>
         <option value="az">Azerbaijan</option>
         <option value="sq">Albanian</option>
-        <option value="en">English</option>
         <option value="ar">Arabic</option>
         <option value="hy">Armenian</option>
         <option value="af">Afrikaans</option>
@@ -62,5 +60,4 @@
         <option value="ru">Russian</option>
         <option value="sv">Swedish</option>
         <option value="ja">Japanese</option>
-
     </select>

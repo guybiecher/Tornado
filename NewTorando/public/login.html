@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Tornado login page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+    <img src="/images/logo.png" id="login_logo">
+    <h1 id="login_title">Login</h1>
 
-
-    <div id="login_box" style="display:flex">
-        <img src="" id="">
-        <input type="text" id="userName" class="fields" placeholder="Username"/><br>
+    <div id="login_box">
+        <input type="text" id="userName" class="fields" placeholder="Username"/>
         <input type="password" id="password" class="fields" placeholder="Password"/><br>
-        <button id="Login" onclick="login()" > Login </button><br><br>
-        <button id="Registerlogin" onclick="registerlogin()">Register</button><br>
+        <div id="login_buttons">
+            <button id="Login" onclick="login()" > Login </button>
+            </br></br></br>
+            <span id="register_text">New to Tornado? Register now for free!</span>
+            </br>
+            <button id="Registerlogin" onclick="registerlogin()">Register</button>
+        </div>
+        <br>
         <br>
     </div> <!--end of login div-->
 

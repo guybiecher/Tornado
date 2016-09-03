@@ -7,17 +7,17 @@ function showChats(){
     hideAll();
     $('#chat_list').css('display', 'block');
 
-};
+}
 
 function showContacts (){
-    hideAll()
+    hideAll();
     $('#contacts_list').css('display', 'block');
-};
+}
 
 function showSettings(){
-    hideAll()
+    hideAll();
     $('#settings').css('display', 'block');
-};
+}
 
 function hideAll(){
     $('#contacts_list').css('display', 'none');
@@ -28,7 +28,7 @@ function hideAll(){
 }
 
 function showChat() {
-    hideAll()
+    hideAll();
     $('#header').css('display', 'none');
     $('#chat_container').css('display', 'block');
     $('#' + activeChat).css('display', 'block');
@@ -37,9 +37,9 @@ function showChat() {
 function openNewChat(userName){
     hideAll();
    console.log(userName + ' openNewChat OK');//debug
-    $('#chat_list').append('<li><button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')">' + userName + '</button></li>');//last change was here userName+_btn
+    $('#chat_list').append('<li><button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')" class="btns_list">' + userName + '</button></li>');//last change was here userName+_btn
     openChat(userName);
-};
+}
 
 function reopenChat(userName){
     hideAll();
@@ -69,7 +69,7 @@ function openChat(userName){
         }
     });
     showChat();
-};
+}
 
 function openHiddenChat(userName){
     console.log(userName + ' openHiddenChat OK');//debug
@@ -85,13 +85,13 @@ function openHiddenChat(userName){
             alert('chat open failed, please try again');
         }
     });
-};
+}
 
 function openNewHiddenChat(userName){
     console.log(userName + ' openNewHiddenChat OK');//debug
-    $('#chat_list').append('<li><button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')" style="color:greenyellow">' + userName + '</button></li>');//last change was here userName+_btn
+    $('#chat_list').append('<li><button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')" style="color:greenyellow" class="btns_list">' + userName + '</button></li>');//last change was here userName+_btn
     openHiddenChat(userName);
-};
+}
 
 $(function($){
     socket = io.connect();
@@ -107,10 +107,10 @@ $(function($){
     $.get('/contacts', function(data, status){
         var contactList = $('#contacts_list');
         if(status === 'success'){
-            contactList.append('<ul>')
+            contactList.append('<ul>');
             for(var i in data){
                 var user = data[i].user;
-                var str = '<li><button onclick="openNewChat(\'' + user + '\')">' + user + '</button></li>';
+                var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
                 contactList.append(str);
             }
             contactList.append('</ul>')
@@ -164,20 +164,30 @@ function sendMsg() {
 }
 
 function prevTrans() {
-    // var text = $("#chat_textbox").val();
+    console.log('trns_prev_panel');
+    var target = activeChat;
+    var $txtInput = $('#' + target).find('#chat_textbox');
+    var $panel = $('#panel_text_container');
+    var $lang = $('#' + target).find('#language');
 
-};
+    socket.emit('preview_msg', $txtInput.val() , $lang.val());
+    socket.on('incoming_msg_preview', function (text) {
+        $panel.text('');
+        $panel.text(text);
+    })
+
+}
 
 function backToLobby (){
     $('#' + activeChat).css('display', 'none');
     $('#header').css('display', 'block');
-    $('#' + activeChat + '_btn').css('color', black);
+    $('#' + activeChat + '_btn').css('color', 'black');
     showChats();
 
-};
+}
 
 function logout() {
-    console.log("logout")
+    console.log("logout");
     socket.emit('logout', myName);
     $.get('/logout' , function (data,status) {
         window.open('http://localhost:3000/login', '_self')

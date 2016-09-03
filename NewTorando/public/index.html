@@ -8,17 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <div data-role="panel" id="trns_prev_panel" data-position="right" data-display="push">
-        <!-- panel content goes here it will display the translation preview-->THIS IS A TEST
-        <a href="#trns_prev_panel" data-rel="close">Close panel</a>
+    <div data-role="panel" id="trns_prev_panel" data-position="right" data-display="push" data-animate="true">
+        <div id="panel_text_container">
+
+        </div>
+        <a href="javascript:history.back()" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
     </div><!-- /panel -->
 
-    <div data-role="page">
+    <div data-role="none">
         <div id="header" data-role="header">
-            <img src="images/logo2.png" id="logout_icon" style="border-radius:50%; width:50px; height:50px; float:left"">
-            <div style="display:flex; float:left">
-                <input type="search" name="search-1" id="search-1" value="">
-                <button><input type="button" id="logoutBtn" onclick="logout()">Logout</input></button>
+            <img src="images/logo2.png" id="main_logo">
+            <div id="top_bar">
+                <input type="search" name="search-1" id="search-1" value="" placeholder="Search">
+                <button id="logoutBtn" onclick="logout()">Logout</button>
             </div>
 
                 <div data-role="navbar" data-iconpos="left">
@@ -46,10 +48,10 @@
 
             </div> <!--end of div settings-->
 
-            <div data-role="footer">
+            <!--<div data-role="footer">
 
 
-            </div>
+            </div>-->
         </div>
     </div> <!--end od div page-->
 

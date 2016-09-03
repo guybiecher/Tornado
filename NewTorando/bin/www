@@ -123,28 +123,28 @@ io.sockets.on('connection', function (socket) {
         console.log(src);//debug
         console.log(lang);//debug
         if(target in rooms){
-            console.log(rooms[target].lang)
+            console.log(rooms[target].lang);
             if(rooms[target].autoTrans){
-                console.log('auto trans on')
+                console.log('auto trans on');
                 translateMeesage(data ,rooms[target].lang).then(
                     function (value) {
                         console.log(value);//debug
                         rooms[target].emit('new_msg', value, src);
                         socket.emit('new_msg', data, target);
                     }, function (reason) {
-                        console.error("Cant translate the message")
+                        console.error("Cant translate the message");
                         rooms[target].emit('new_msg', "Cant translate the message", src)
                     }
                 );
             } else {
-                console.log('auto trans off')
+                console.log('auto trans off');
                 translateMeesage(data ,lang).then(
                     function (value) {
                         console.log(value);//debug
                         rooms[target].emit('new_msg', value, src);
                         socket.emit('new_msg', data, target);
                     }, function (reason) {
-                        console.error("Cant translate the message")
+                        console.error("Cant translate the message");
                         rooms[target].emit('new_msg', "Cant translate the message", src)
                     }
                 );
@@ -153,6 +153,18 @@ io.sockets.on('connection', function (socket) {
         } else {
             socket.emit('new_msg', target + " is offline, can't send a message", target);
         }
+    });
+
+    socket.on('preview_msg', function (data , lang){
+        translateMeesage(data ,lang).then(
+            function (value) {
+                console.log(value);//debug
+                socket.emit('incoming_msg_preview', value);
+            }, function (reason) {
+                console.error("Cant translate the message");
+                socket.emit('incoming_msg_preview', "Cant translate the message");
+            }
+        );
     });
 
     socket.on('new socket', function(data, err){

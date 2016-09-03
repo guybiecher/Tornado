@@ -62,7 +62,7 @@ app.get('/register', function (req, res) {
 
 app.get('/login', function (req, res) {
     res.sendfile(__dirname + '/public/login.html')
-})
+});
 
 app.get('/logout', function (req, res) {
     delete rooms[req.session.user];
@@ -73,45 +73,50 @@ app.get('/logout', function (req, res) {
 });
 app.get('/account', function (req, res) {
         res.sendFile(__dirname + '/public/Account.html', '_self')
-})
+});
 
 app.get('/translate', function (req, res) {
-    res.sendfile(__dirname + '/public/translate.html')
-})
+    res.sendfile(__dirname + '/public/translate.html');
+});
 
 
 app.post('/login', function (req, res) {
-    checkUserOnDB(req, res, req.body.name, req.body.password, "login")
-})
+    checkUserOnDB(req, res, req.body.name, req.body.password, "login");
+});
 
 app.get('/settings', function (req, res) {
-    console.log(req.session)
+    console.log(req.session);
     res.sendfile(__dirname + '/public/settings.html')
-})
+});
 
 app.get('/about', function (req, res) {
     res.sendfile(__dirname + '/public/about.html')
+});
+
+app.get('/images/logo.png', function (req, res) {
+    res.sendFile(__dirname + '/public/images/logo2.png');
 })
+
 app.get('/home', function (req, res) {
-    loggerInfo.info(req.session)
+    loggerInfo.info(req.session);
 
     if (typeof req.session.user != 'undifined') {
-        console.log(req.session.user)
-        var userSession = req.session.user
-        var password = req.session.password
+        console.log(req.session.user);
+        var userSession = req.session.user;
+        var password = req.session.password;
 
         checkUserOnDB(req, res, userSession, password, "home")
 
     } else {
-        loggerInfo.info("User not login")
+        loggerInfo.info("User not login");
         res.redirect("/login")
     }
-})
+});
 
 app.post('/updatelanguage', function (req, res) {
-    var connection = createConnection()
-    var user = req.session.user
-    var language = req.body.language
+    var connection = createConnection();
+    var user = req.session.user;
+    var language = req.body.language;
     var autoTranslate;
     if(req.body.onOffBtn === "on"){
         autoTranslate = true;
