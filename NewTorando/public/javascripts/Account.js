@@ -50,3 +50,12 @@ function smiley() {
 
     });
 }
+function dog() {
+    alert("ok");
+
+    var pic = "dog.jpeg"
+    $.post('/updateProfilePic', {picPath : pic }, function (data, status) {
+
+
+    });
+}

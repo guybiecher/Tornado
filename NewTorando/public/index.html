@@ -15,12 +15,29 @@
         <a href="javascript:history.back()" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
     </div><!-- /panel -->
 
-    <div data-role="none">
-        <div id="header" data-role="header">
-            <img src="images/logo2.png" id="main_logo">
-            <div id="top_bar">
-                <input type="search" name="search-1" id="search-1" value="" placeholder="Search">
-                <button id="logoutBtn" onclick="logout()">Logout</button>
+    <div data-role="page">
+        <div id="header">
+            <table>
+                <tr>
+
+                        <th><img src="images/logo2.png" id="logout_icon" style="border-radius:50%; width:50px; height:50px; float:left"">
+                </th>
+                        <th>
+
+
+                            <input type="text" id="search" name="search" />
+                            <button id="search-submit" onclick = search() value="" />
+
+
+
+                </th>
+                      </tr>
+
+                </table>
+            <div style="display:flex; float:left">
+
+
+                <button><input type="button" id="logoutBtn" onclick="logout()">Logout</input></button>
             </div>
 
                 <div data-role="navbar" data-iconpos="left">

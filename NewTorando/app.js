@@ -143,10 +143,9 @@ app.post('/updatelanguage', function (req, res) {
 });
 
 app.post('/updateProfilePic', function (req, res) {
-    console.log("asisudh")
     var connection = createConnection();
     var picPath = req.body.picPath;
-
+    console.log(picPath)
     var user = req.session.user;
     var query = 'UPDATE Users SET profile_pic = ? WHERE user = ?;';
 
@@ -199,7 +198,7 @@ app.post('/register', function (req, res) {
     var passowrd = req.body.password;
     var connection = createConnection();
 
-    var post = {user: name, password: passowrd, language: "en"};
+    var post = {user: name, password: passowrd, language: "en" ,profile_pic: "smiley.gif"};
     connection.query('INSERT INTO Users SET ?', post, function (err, rows, fields) {
         if (!err) {
             loggerInfo.info('The solution is: ', rows);
