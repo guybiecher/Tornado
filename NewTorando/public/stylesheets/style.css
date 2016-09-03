@@ -165,5 +165,7 @@
 }
 
 #chat_textbox {
-
+  position: initial;
+  width: 82%;
+  border-radius: 4px;
 }

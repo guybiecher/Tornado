@@ -71,16 +71,15 @@ function openChat(userName){
     showChat();
     activeChat = userName;
     $targetUser = userName;
-    var pic = '';
+
     $.post('/chat', {user: userName}, function (data, status) {
-        pic = data;
+
     });
-    console.log(pic)
 
     $.get('/chat',{user: userName} , function (data, status) {
         console.log('/chat request:');
         if(status === 'success'){
-            $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '"><div class="chat_header"><button id="chat_back_btn" onclick="backToLobby()">Back to lobby</button><img src=' + pic + ' id="single_chat_profile_pic"><h1 id="chat_title">Chat with ' + userName + '</h1>' + data + '</div></div>')
+            $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '"><div class="chat_header"><button id="chat_back_btn" onclick="backToLobby()">Back to lobby</button><img src="#" id="single_chat_profile_pic"><h1 id="chat_title">Chat with ' + userName + '</h1>' + data + '</div></div>')
         } else {
             alert('chat open failed, please try again');
         }
