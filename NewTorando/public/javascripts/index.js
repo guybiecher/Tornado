@@ -10,7 +10,6 @@ function showChats(){
     chatOpen = true
     hideAll();
     $('#chatSearch_list').empty()
-
     $('#chat_list').css('display', 'block');
 
 }
@@ -36,13 +35,7 @@ function showSettings() {
 
     });
     $('#settings').css('display', 'block');
-
 }
-
-
-
-
-
 
 function hideAll(){
     $('#contacts_list').css('display', 'none');
@@ -89,15 +82,15 @@ function openChat(userName){
     showChat();
     activeChat = userName;
     $targetUser = userName;
-    var pic = '';
+
     $.post('/chat', {user: userName}, function (data, status) {
-        pic = data;
+
     });
 
     $.get('/chat',{user: userName} , function (data, status) {
         console.log('/chat request:');
         if(status === 'success'){
-            $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '"><div class="chat_header"><button id="chat_back_btn" onclick="backToLobby()">Back to lobby</button><img src=' + pic + ' id="single_chat_profile_pic"><h1 id="chat_title">Chat with ' + userName + '</h1>' + data + '</div></div>')
+            $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '"><div class="chat_header"><button id="chat_back_btn" onclick="backToLobby()">Back to lobby</button><img src="#" id="single_chat_profile_pic"><h1 id="chat_title">Chat with ' + userName + '</h1>' + data + '</div></div>')
         } else {
             alert('chat open failed, please try again');
         }
@@ -145,13 +138,11 @@ $(function($){
     // $.get('/contacts', function(data, status){
     //     var contactList = $('#contacts_list');
     //     if(status === 'success'){
-    //         contactList.append('<ul>');
     //         for(var i in data){
     //             var user = data[i].user;
     //             var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
     //             contactList.append(str);
     //         }
-    //         contactList.append('</ul>')
     //     } else {
     //        alert('Error retreaving contacs, please refresh the page');
     //     }
@@ -160,8 +151,6 @@ $(function($){
     $.get('/getMyName', function (data) {
         myName = data;
     });
-
-
 
     socket.on('new_msg', function(data, src){
         console.log('msg recieved');//debug
@@ -183,7 +172,6 @@ $(function($){
         }
 
     });
-
 });
 
 /*single chat js code*/
@@ -245,17 +233,14 @@ function search() {
             chatOpen = false;
             var contactList = $('#contacts_list');
             if(status === 'success'){
-                contactList.append('<ul>')
                 for(var i in data){
                     var user = data[i].user;
                     console.log(user)
                     if(user === search){
-                        var str = '<button onclick="openNewChat(\'' + user + '\')">' + user + '</button>';
+                        var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
                         contactList.append(str);
                     }
-
                 }
-                contactList.append('</ul>')
             } else {
                 alert('Error retreaving contacs, please refresh the page');
             }
@@ -266,19 +251,17 @@ function search() {
         $.get('/contacts', function(data, status){
             var chatList = $('#chatSearch_list');
             if(status === 'success'){
-                chatList.append('<ul>')
                 for(var i in inChat){
                     console.log("testt the search")
                     console.log(inChat.toString())
                     var user = inChat[i];
                     console.log("check user and search" + user + "and" + search)
                     if(user === search){
-                        var str = '<li><button onclick="reopenChat(\'' + user + '\')">' + user + '</button></li>';
+                        var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
                         chatList.append(str);
                     }
 
                 }
-                chatList.append('</ul>')
             } else {
                 alert('Error retreaving contacs, please refresh the page');
             }
@@ -291,20 +274,17 @@ function search() {
 
 }
 
-
 function reloadContacts() {
     console.log("ttttttttt")
     $.get('/contacts', function(data, status){
         console.log("fffff")
         var contactList = $('#contacts_list');
         if(status === 'success'){
-            contactList.append('<ul>')
             for(var i in data){
                 var user = data[i].user;
-                var str = '<li><button onclick="openNewChat(\'' + user + '\')">' + user + '</button></li>';
+                var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
                 contactList.append(str);
             }
-            contactList.append('</ul>')
         } else {
             alert('Error retreaving contacs, please refresh the page');
         }
