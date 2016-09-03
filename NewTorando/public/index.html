@@ -20,10 +20,11 @@
 
     <div data-role="page">
         <div id="header">
-            <img src="images/logo2.png" id="main_logo">
+            <img src="images/logo.png" id="main_logo">
             <div id="top_bar">
-                <input type="text" id="search" name="search">
-                <button id="search-submit" onclick = search() value="" />
+                <input type="text" id="search" name="search" placeholder="Search">
+                <!--<button id="search-submit" onclick = search() value="" class="ui-btn ui-icon-search ui-btn-icon-left"></button>-->
+                <img src="/images/search.png" id="search_icon" onclick = search() id="search-submit">
                 <button id="logoutBtn" onclick="logout()">Logout</button>
             </div>
 

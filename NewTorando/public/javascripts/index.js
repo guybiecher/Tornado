@@ -75,8 +75,9 @@ function openChat(userName){
     $.post('/chat', {user: userName}, function (data, status) {
         pic = data;
     });
+    console.log(pic)
 
-    $.get('/chat', function (data, status) {
+    $.get('/chat',{user: userName} , function (data, status) {
         console.log('/chat request:');
         if(status === 'success'){
             $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '"><div class="chat_header"><button id="chat_back_btn" onclick="backToLobby()">Back to lobby</button><img src=' + pic + ' id="single_chat_profile_pic"><h1 id="chat_title">Chat with ' + userName + '</h1>' + data + '</div></div>')
@@ -127,13 +128,11 @@ $(function($){
     // $.get('/contacts', function(data, status){
     //     var contactList = $('#contacts_list');
     //     if(status === 'success'){
-    //         contactList.append('<ul>');
     //         for(var i in data){
     //             var user = data[i].user;
     //             var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
     //             contactList.append(str);
     //         }
-    //         contactList.append('</ul>')
     //     } else {
     //        alert('Error retreaving contacs, please refresh the page');
     //     }
@@ -224,17 +223,14 @@ function search() {
             chatOpen = false;
             var contactList = $('#contacts_list');
             if(status === 'success'){
-                contactList.append('<ul>')
                 for(var i in data){
                     var user = data[i].user;
                     console.log(user)
                     if(user === search){
-                        var str = '<button onclick="openNewChat(\'' + user + '\')">' + user + '</button>';
+                        var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
                         contactList.append(str);
                     }
-
                 }
-                contactList.append('</ul>')
             } else {
                 alert('Error retreaving contacs, please refresh the page');
             }
@@ -245,19 +241,17 @@ function search() {
         $.get('/contacts', function(data, status){
             var chatList = $('#chatSearch_list');
             if(status === 'success'){
-                chatList.append('<ul>')
                 for(var i in inChat){
                     console.log("testt the search")
                     console.log(inChat.toString())
                     var user = inChat[i];
                     console.log("check user and search" + user + "and" + search)
                     if(user === search){
-                        var str = '<li><button onclick="reopenChat(\'' + user + '\')">' + user + '</button></li>';
+                        var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
                         chatList.append(str);
                     }
 
                 }
-                chatList.append('</ul>')
             } else {
                 alert('Error retreaving contacs, please refresh the page');
             }
@@ -269,20 +263,17 @@ function search() {
 
 }
 
-
 function reloadContacts() {
     console.log("ttttttttt")
     $.get('/contacts', function(data, status){
         console.log("fffff")
         var contactList = $('#contacts_list');
         if(status === 'success'){
-            contactList.append('<ul>')
             for(var i in data){
                 var user = data[i].user;
-                var str = '<li><button onclick="openNewChat(\'' + user + '\')">' + user + '</button></li>';
+                var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
                 contactList.append(str);
             }
-            contactList.append('</ul>')
         } else {
             alert('Error retreaving contacs, please refresh the page');
         }
