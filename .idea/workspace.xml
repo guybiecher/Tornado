@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0768036b-9402-4639-9033-cd8ef4ab4665" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/NewTorando/public/javascripts/Settings.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/app.js" afterPath="$PROJECT_DIR$/NewTorando/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/bin/www" afterPath="$PROJECT_DIR$/NewTorando/bin/www" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/Account.html" afterPath="$PROJECT_DIR$/NewTorando/public/Account.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/index.html" afterPath="$PROJECT_DIR$/NewTorando/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/javascripts/Account.js" afterPath="$PROJECT_DIR$/NewTorando/public/javascripts/Account.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/javascripts/settings.js" afterPath="$PROJECT_DIR$/NewTorando/public/javascripts/settings.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/settings.html" afterPath="$PROJECT_DIR$/NewTorando/public/settings.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/javascripts/Settings.js" afterPath="$PROJECT_DIR$/NewTorando/public/javascripts/Settings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/javascripts/index.js" afterPath="$PROJECT_DIR$/NewTorando/public/javascripts/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/single_chat.html" afterPath="$PROJECT_DIR$/NewTorando/public/single_chat.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NewTorando/public/stylesheets/style.css" afterPath="$PROJECT_DIR$/NewTorando/public/stylesheets/style.css" />
     </list>
     <ignored path="Tornado.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,40 +31,23 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="50" column="71" selection-start-line="50" selection-start-column="71" selection-end-line="50" selection-end-column="71" />
+            <state relative-caret-position="357">
+              <caret line="70" column="156" selection-start-line="70" selection-start-column="156" selection-end-line="70" selection-end-column="156" />
               <folding>
-                <marker date="1472903766000" expanded="true" signature="1927:1956" ph="..." />
-                <marker date="1472903766000" expanded="true" signature="2496:2524" ph="..." />
-                <marker date="1472903766000" expanded="true" signature="2898:2915" ph="..." />
+                <marker date="1472917080671" expanded="true" signature="1907:1936" ph="..." />
+                <marker date="1472917080671" expanded="true" signature="2591:2619" ph="..." />
+                <marker date="1472917080671" expanded="true" signature="3119:3136" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/settings.js">
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+            <state relative-caret-position="366">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Account.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/Account.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
-              <folding>
-                <marker date="1472915048000" expanded="true" signature="274:328" ph="..." />
-                <marker date="1472915048000" expanded="true" signature="1560:1614" ph="..." />
-                <marker date="1472915048000" expanded="true" signature="1930:1984" ph="..." />
-                <marker date="1472915048000" expanded="true" signature="2311:2365" ph="..." />
-                <marker date="1472915048000" expanded="true" signature="2691:2745" ph="..." />
-                <marker date="1472915048000" expanded="true" signature="3066:3120" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -74,11 +55,9 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NewTorando/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+            <state relative-caret-position="340">
+              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#th#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -88,24 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NewTorando/app.js">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewTorando/public/stylesheets/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2385">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <marker date="1472916126000" expanded="true" signature="1576:1590" ph="{...}" />
-                <marker date="1472916126000" expanded="true" signature="7572:7574" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="settings.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NewTorando/public/settings.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+            <state relative-caret-position="466">
+              <caret line="144" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -114,43 +80,40 @@
       <file leaf-file-name="www" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NewTorando/bin/www">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2595">
-              <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-              <folding>
-                <marker date="1472915408000" expanded="true" signature="679:851" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="971:993" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="1508:1661" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="1663:1693" ph="/** Mysql Connection ...*/" />
-                <marker date="1472915408000" expanded="true" signature="1723:1939" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="2414:3001" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="2564:2767" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="3144:3347" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="3796:4184" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="3870:3988" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="4252:4325" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="4331:4617" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="4547:4617" ph="{...}" />
-                <marker date="1472915408000" expanded="true" signature="5747:5753" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chat.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/chat.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="2975">
+              <caret line="175" column="26" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Account.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Account.html">
+      <file leaf-file-name="single_chat.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/NewTorando/public/single_chat.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewTorando/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1615">
+              <caret line="95" column="21" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="21" />
+              <folding>
+                <marker date="1472831420687" expanded="true" signature="3719:3725" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewTorando/public/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -159,8 +122,8 @@
       <file leaf-file-name="Account.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NewTorando/public/Account.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state relative-caret-position="986">
+              <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -179,7 +142,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
+    <option name="RESET_MODE" value="KEEP" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -193,26 +156,26 @@
         <option value="$PROJECT_DIR$/contacts.html" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/Translation seetings page.html" />
+        <option value="$PROJECT_DIR$/NewTorando/public/javascripts/Settings.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/javascripts/chat.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/javascripts/login.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/Account.html" />
         <option value="$PROJECT_DIR$/NewTorando/public/javascripts/register.js" />
+        <option value="$PROJECT_DIR$/NewTorando/public/javascripts/Account.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/javascripts/About.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/About.html" />
         <option value="$PROJECT_DIR$/NewTorando/public/javascripts/settings.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/settings.html" />
         <option value="$PROJECT_DIR$/NewTorando/public/translate.html" />
         <option value="$PROJECT_DIR$/NewTorando/public/javascripts/Translate.js" />
-        <option value="$PROJECT_DIR$/NewTorando/bin/www" />
-        <option value="$PROJECT_DIR$/NewTorando/public/single_chat.html" />
+        <option value="$PROJECT_DIR$/NewTorando/app.js" />
         <option value="$PROJECT_DIR$/NewTorando/public/login.html" />
         <option value="$PROJECT_DIR$/NewTorando/public/register.html" />
-        <option value="$PROJECT_DIR$/NewTorando/public/stylesheets/style.css" />
+        <option value="$PROJECT_DIR$/NewTorando/bin/www" />
         <option value="$PROJECT_DIR$/NewTorando/public/index.html" />
         <option value="$PROJECT_DIR$/NewTorando/public/javascripts/index.js" />
-        <option value="$PROJECT_DIR$/NewTorando/public/javascripts/Account.js" />
-        <option value="$PROJECT_DIR$/NewTorando/app.js" />
-        <option value="$PROJECT_DIR$/NewTorando/public/javascripts/Settings.js" />
+        <option value="$PROJECT_DIR$/NewTorando/public/single_chat.html" />
+        <option value="$PROJECT_DIR$/NewTorando/public/stylesheets/style.css" />
       </list>
     </option>
   </component>
@@ -223,10 +186,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="65" />
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="810" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -253,6 +216,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -321,18 +285,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
+              <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tornado" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tornado" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NewTorando" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/NewTorando/bin" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
@@ -349,7 +330,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.www">
-    <configuration default="false" name="www" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="/usr/local/bin/node" path-to-js-file="www" working-dir="$PROJECT_DIR$/NewTorando/bin">
+    <configuration default="false" name="www" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="www" working-dir="$PROJECT_DIR$/NewTorando/bin">
       <profiling v8-profiler-path="" />
       <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
         <profiling v8-profiler-path="" />
@@ -439,6 +420,8 @@
       <workItem from="1472042904476" duration="1823000" />
       <workItem from="1472141292540" duration="18759000" />
       <workItem from="1472294917978" duration="38889000" />
+      <workItem from="1472906521391" duration="9106000" />
+      <workItem from="1472916521112" duration="650000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;add account.js file'for update settings&quot;">
       <created>1472299798712</created>
@@ -465,9 +448,9 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144710000" />
+    <option name="totallyTimeSpent" value="152229000" />
   </component>
-  <component name="TodoView" selected-index="3">
+  <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -477,17 +460,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="23" width="1440" height="810" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15362932" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26993006" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15335868" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27228916" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26747313" sideWeight="0.50253487" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22797203" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2172702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22849463" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21908602" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26601672" sideWeight="0.49746513" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2016129" sideWeight="0.49746513" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997253" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -495,6 +477,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -624,7 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -715,7 +697,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="340">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
@@ -724,7 +706,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -754,6 +735,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -764,13 +748,6 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/contacts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -785,13 +762,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -816,11 +786,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/Account.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="58" column="12" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/Settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NewTorando/public/settings.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-          <folding />
+        <state relative-caret-position="221">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -828,39 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="29" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2595">
-          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-          <folding>
-            <marker date="1472915408000" expanded="true" signature="679:851" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="971:993" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="1508:1661" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="1663:1693" ph="/** Mysql Connection ...*/" />
-            <marker date="1472915408000" expanded="true" signature="1723:1939" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="2414:3001" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="2564:2767" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="3144:3347" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="3796:4184" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="3870:3988" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="4252:4325" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="4331:4617" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="4547:4617" ph="{...}" />
-            <marker date="1472915408000" expanded="true" signature="5747:5753" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/single_chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="61" column="44" selection-start-line="61" selection-start-column="44" selection-end-line="61" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -875,33 +826,74 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="33" column="40" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NewTorando/public/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
+        <state relative-caret-position="476">
           <caret line="28" column="4" selection-start-line="28" selection-start-column="4" selection-end-line="28" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/stylesheets/style.css">
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/Account.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="53" column="7" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="7" />
+        <state relative-caret-position="597">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewTorando/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1615">
+          <caret line="95" column="21" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="21" />
+          <folding>
+            <marker date="1472831420687" expanded="true" signature="3719:3725" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/contacts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewTorando/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2975">
+          <caret line="175" column="26" selection-start-line="175" selection-start-column="16" selection-end-line="175" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="70" column="156" selection-start-line="70" selection-start-column="156" selection-end-line="70" selection-end-column="156" />
+          <folding>
+            <marker date="1472917080671" expanded="true" signature="1907:1936" ph="..." />
+            <marker date="1472917080671" expanded="true" signature="2591:2619" ph="..." />
+            <marker date="1472917080671" expanded="true" signature="3119:3136" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NewTorando/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
+        <state relative-caret-position="340">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#th#0;n#tr#0;n#table#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -910,57 +902,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/Account.html">
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state relative-caret-position="466">
+          <caret line="144" column="0" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/index.js">
+    <entry file="file://$PROJECT_DIR$/NewTorando/public/single_chat.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="50" column="71" selection-start-line="50" selection-start-column="71" selection-end-line="50" selection-end-column="71" />
-          <folding>
-            <marker date="1472903766000" expanded="true" signature="1927:1956" ph="..." />
-            <marker date="1472903766000" expanded="true" signature="2496:2524" ph="..." />
-            <marker date="1472903766000" expanded="true" signature="2898:2915" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2385">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <marker date="1472916126000" expanded="true" signature="1576:1590" ph="{...}" />
-            <marker date="1472916126000" expanded="true" signature="7572:7574" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NewTorando/public/javascripts/Account.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="72" column="35" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
-          <folding>
-            <marker date="1472915048000" expanded="true" signature="274:328" ph="..." />
-            <marker date="1472915048000" expanded="true" signature="1560:1614" ph="..." />
-            <marker date="1472915048000" expanded="true" signature="1930:1984" ph="..." />
-            <marker date="1472915048000" expanded="true" signature="2311:2365" ph="..." />
-            <marker date="1472915048000" expanded="true" signature="2691:2745" ph="..." />
-            <marker date="1472915048000" expanded="true" signature="3066:3120" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>

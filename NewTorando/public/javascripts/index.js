@@ -11,22 +11,20 @@ function showChats(){
     $('#chatSearch_list').empty()
     $('#chat_list').css('display', 'block');
 
-};
+}
 
 function showContacts (){
     chatOpen = false
-    hideAll()
+    hideAll();
     $('#contacts_list').empty()
-
     reloadContacts()
-
     $('#contacts_list').css('display', 'block');
-};
+}
 
 function showSettings(){
-    hideAll()
+    hideAll();
     $('#settings').css('display', 'block');
-};
+}
 
 function hideAll(){
     $('#contacts_list').css('display', 'none');
@@ -36,9 +34,8 @@ function hideAll(){
     $('#' + activeChat).css('display', 'none');
 }
 
-function showChat(){
-
-    hideAll()
+function showChat() {
+    hideAll();
     $('#header').css('display', 'none');
     $('#chat_container').css('display', 'block');
     $('#' + activeChat).css('display', 'block');
@@ -48,8 +45,13 @@ function openNewChat(userName){
     hideAll();
    console.log(userName + ' openNewChat OK');//debug
     inChat.push(userName)
-    $('#chat_list').append('<li><button onclick="reopenChat(\'' + userName + '\')">' + userName + '</button></li>');
-    openChat(userName);
+    var button ='#' + userName + '_btn';
+    if($(button).length){
+        reopenChat(userName);
+    } else {
+        $('#chat_list').append('<button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')" class="btns_list">' + userName + '</button>');//last change was here userName+_btn
+        openChat(userName);
+    }
 }
 
 function reopenChat(userName){
@@ -59,7 +61,7 @@ function reopenChat(userName){
     $targetUser = userName;
     $.post('/chat', {user: userName}, function (data, status) {
     });
-    $('#' + userName + '_btn').css('color', 'black');
+    $('#' + userName + '_btn').css('color', 'white');
     showChat();
 }
 
@@ -73,17 +75,18 @@ function openChat(userName){
     });
 
     $.get('/chat', function (data, status) {
-        console.log('/chat request:')
+        console.log('/chat request:');
         if(status === 'success'){
-            $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '">' + data + '</div>')
+            $('#chat_container').append('<div style="display: block; height: 150px" class="chat_window" id="' + userName + '"><h1 id="chat_title">Chat with ' + userName + '</h1>' + data + '</div>')
         } else {
             alert('chat open failed, please try again');
         }
     });
     showChat();
+    $('#' + userName).find('#chat_title').text(userName);
 }
 
-function openHiddenChat(userName){
+function openHiddenChat(userName, text){
     console.log(userName + ' openHiddenChat OK');//debug
     $targetUser = userName;
     $.post('/chat', {user: userName}, function (data, status) {
@@ -97,12 +100,15 @@ function openHiddenChat(userName){
             alert('chat open failed, please try again');
         }
     });
+
+    $('#' + userName).find('#chat_body').append(text + "</br>");
+    $('#' + userName).find('#chat_title').text(userName);
 }
 
-function openNewHiddenChat(userName){
+function openNewHiddenChat(userName, text){
     console.log(userName + ' openNewHiddenChat OK');//debug
-    $('#chat_list').append('<li><button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')" style="color:greenyellow" class="btns_list">' + userName + '</button></li>');//last change was here userName+_btn
-    openHiddenChat(userName);
+    $('#chat_list').append('<button id="' + userName + '_btn" onclick="reopenChat(\'' + userName + '\')" style="color:greenyellow" class="btns_list">' + userName + '</button>');//last change was here userName+_btn
+    openHiddenChat(userName, text);
 }
 
 $(function($){
@@ -117,13 +123,12 @@ $(function($){
     });
     reloadContacts();
     // $.get('/contacts', function(data, status){
-    //     chatOpen = false;
     //     var contactList = $('#contacts_list');
     //     if(status === 'success'){
-    //         contactList.append('<ul>')
+    //         contactList.append('<ul>');
     //         for(var i in data){
     //             var user = data[i].user;
-    //             var str = '<li><button onclick="openNewChat(\'' + user + '\')">' + user + '</button></li>';
+    //             var str = '<button onclick="openNewChat(\'' + user + '\')" class="btns_list">' + user + '</button>';
     //             contactList.append(str);
     //         }
     //         contactList.append('</ul>')
@@ -131,9 +136,6 @@ $(function($){
     //        alert('Error retreaving contacs, please refresh the page');
     //     }
     // });
-
-
-
 
     $.get('/getMyName', function (data) {
         myName = data;
@@ -197,7 +199,7 @@ function prevTrans() {
 function backToLobby (){
     $('#' + activeChat).css('display', 'none');
     $('#header').css('display', 'block');
-    $('#' + activeChat + '_btn').css('color', 'black');
+    $('#' + activeChat + '_btn').css('color', 'white');
     showChats();
 
 }

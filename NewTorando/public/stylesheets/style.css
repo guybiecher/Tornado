@@ -3,6 +3,14 @@
   height: 100%;
 }
 
+#panel_text_container {
+  border: 2px solid #C0C0C0;
+  border-radius: 5px;
+  padding: 1em;
+  font-size: 12px;
+  text-align: center;
+}
+
 #logoutBtn{
   float:right;
   position: relative;
@@ -97,15 +105,42 @@
 }
 
 #chat_body{
-  width:100%;
-  height: 400px;
+  height: 80%;
+  width: 95%;
+  position: fixed;
+  left: 0.4em;
+  top: 5em;
   border-style: solid;
-  border-color: black;
+  border-color: #8CCFDF;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#single_chat_profile_pic {
+  float: right;
+  position: fixed;
+  left: 22em;
+  top: 2em;
+}
+
+#chat_footer {
+  position: fixed;
+  overflow: scroll;
+  top: 43em;
 }
 
 .btns_list {
   width: 100%;
-  border-radius: 15px;
-  background-color: black;
+  border-radius: 4px;
+  background-color: #545454;
   color:white;
+}
+
+#contacts_list {
+  position: fixed;
+  top: 10%;
+}
+
+.chat_header {
+
 }
